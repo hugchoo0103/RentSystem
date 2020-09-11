@@ -9,7 +9,7 @@ public class testMybatis {
     @Test
     public void test1(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        rentInfoService rentInfoServiceImpl = (rentInfoService)context.getBean("adminServiceImpl");
+        rentInfoService rentInfoServiceImpl = (rentInfoService)context.getBean("rentInfoServiceImpl");
         for(rentInfo ri : rentInfoServiceImpl.GetRentInfoList()){
             System.out.println(ri);
         }
@@ -18,10 +18,11 @@ public class testMybatis {
     @Test
     public void test2(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        rentInfoService rentInfoServiceImpl = (rentInfoService)context.getBean("adminServiceImpl");
+        rentInfoService rentInfoServiceImpl = (rentInfoService)context.getBean("rentInfoServiceImpl");
         PageInfo pageInfo = rentInfoServiceImpl.GetRentInfoListLimit(0,10);
         for (Object o : pageInfo.getList()) {
             System.out.println(o);
         }
     }
+
 }

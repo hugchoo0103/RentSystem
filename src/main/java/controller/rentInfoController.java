@@ -7,8 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pojo.hirePerson;
 import pojo.rentInfo;
+import pojo.rentPerson;
+import service.hirePersonService;
 import service.rentInfoService;
+import service.rentPersonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,41 +22,48 @@ import java.util.List;
 public class rentInfoController {
     @Autowired
     private rentInfoService riservice;
+    private hirePersonService hpservice;
+    private rentPersonService rpservice;
 
 
     //rentInfo query all
     @RequestMapping("/allRentInfo")
-    public String getAllRentInfo(Model model){
+    public String getAllRentInfo(Model model) {
         List<rentInfo> rentInfoList = riservice.GetRentInfoList();
-        model.addAttribute("rentInfoList",rentInfoList);
+        model.addAttribute("rentInfoList", rentInfoList);
         return "rentInfo/allRentInfo";
     }
 
 
     //rentInfo query all   limit
     @RequestMapping("/allRentInfoLimit")
-    public String getRentInfoListLimit(@RequestParam(required = false,defaultValue = "0",value = "startIndex") Integer startIndex,
-                                         @RequestParam(required = false,defaultValue = "10",value = "pageSize")Integer pageSize,Model model){
-        PageInfo pageInfo = riservice.GetRentInfoListLimit(startIndex,pageSize);
-        model.addAttribute("rentInfoList",pageInfo.getList());
-        model.addAttribute("pageinfo",pageInfo);
+    public String getRentInfoListLimit(@RequestParam(required = false, defaultValue = "0", value = "startIndex") Integer startIndex,
+                                       @RequestParam(required = false, defaultValue = "10", value = "pageSize") Integer pageSize, Model model) {
+        PageInfo pageInfo = riservice.GetRentInfoListLimit(startIndex, pageSize);
+        model.addAttribute("rentInfoList", pageInfo.getList());
+        model.addAttribute("pageinfo", pageInfo);
         return "rentInfo/allRentInfo";
     }
 
 
-
     //rentInfo ++
     @RequestMapping("/toAddRentInfo")
-    public String toAddRentInfo(){
+    public String toAddRentInfo() {
         return "rentInfo/addRentInfo";
     }
 
     @RequestMapping("/addRentInfo")
-    public String addRentInfo(rentInfo ri,Model model){
-        if(riservice.GetRentInfoById(ri.getRentInfoId())!=null){
-            model.addAttribute("rentInfoerror","rentInfo已存在");
+    public String addRentInfo(rentInfo ri, Model model) {
+        if (riservice.GetRentInfoById(ri.getRentInfoId()) != null) {
+            model.addAttribute("rentInfoerror", "rentInfo已存在");
             return "rentInfo/addRentInfo";
         }
+        hirePerson hp = hpservice.GetHirePersonById(ri.getHireId());
+        rentPerson rp = rpservice.GetRentPersonById(ri.getRentId());
+        ri.setHireName(hp.getUserName());
+        ri.setHirePhone(hp.getPhone());
+        ri.setRentName(rp.getUserName());
+        ri.setRentPhone(rp.getPhone());
         riservice.AddRentInfo(ri);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
@@ -60,14 +71,14 @@ public class rentInfoController {
 
     //rentInfo modify
     @RequestMapping("/toUpdateRentInfo/{rentInfoId}")
-    public String toUpdateRentInfo(@PathVariable("rentInfoId") Integer rid, Model model){
+    public String toUpdateRentInfo(@PathVariable("rentInfoId") Integer rid, Model model) {
         rentInfo ri = riservice.GetRentInfoById(rid);
-        model.addAttribute("upRentInfo",ri);
+        model.addAttribute("upRentInfo", ri);
         return "rentInfo/updateRentInfo";
     }
 
     @RequestMapping("/updateRentInfo")
-    public String updateRentInfo(rentInfo ri){
+    public String updateRentInfo(rentInfo ri) {
         riservice.UpdateRentInfo(ri);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
@@ -75,7 +86,7 @@ public class rentInfoController {
 
     //rentInfo --
     @RequestMapping("/deleteRentInfo/{rid}")
-    public String deleteRentInfo(@PathVariable("rid") Integer rid,Model model){
+    public String deleteRentInfo(@PathVariable("rid") Integer rid, Model model) {
         riservice.DeleteRentInfoById(rid);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
@@ -83,16 +94,16 @@ public class rentInfoController {
 
     //rentInfo query rentInfoId
     @RequestMapping("/getRentInfoById")
-    public String getRentInfoById(Integer rid, Model model){
+    public String getRentInfoById(Integer rid, Model model) {
         rentInfo rp = riservice.GetRentInfoById(rid);
         List<rentInfo> list = new ArrayList<rentInfo>();
         list.add(rp);
-        if(rp==null){
+        if (rp == null) {
             list = riservice.GetRentInfoList();
-            model.addAttribute("error","无搜索结果");
+            model.addAttribute("error", "无搜索结果");
             return "forward:/rentInfo/allRentInfoLimit?startIndex=1";
         }
-        model.addAttribute("rentInfoList",list);
+        model.addAttribute("rentInfoList", list);
         return "rentInfo/allRentInfo";
     }
 

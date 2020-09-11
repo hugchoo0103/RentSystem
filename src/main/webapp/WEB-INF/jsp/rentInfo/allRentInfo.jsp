@@ -83,6 +83,7 @@
     </div>
 </nav>
 <div class="container">
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
@@ -92,30 +93,9 @@
             </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-5 column">
-            <form id="dateform" class="form-inline"
-                  action="${pageContext.request.contextPath}/journal/getJournalByStartTimeAndEndTime" method="post">
-                <div class="form-group">
-                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                        <input type="text" placeholder="起始时间" name="journalStartTime" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                        <input type="text" placeholder="结束时间" name="journalEndTime" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-                        <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <button id="btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-        <div class="col-md-5 column">
+        <div class="col-md-12 column">
             <form id="journalform" class="form-inline"
                   action="${pageContext.request.contextPath}/rentInfo/getRentInfoById" method="post" style="float: right">
                 <span style="color: crimson;font-weight: bold">${error}</span>
@@ -124,16 +104,8 @@
                 <button id="button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
-        <div class="col-md-2 column">
-            <div class="form-group" style="width: 120px;float: right">
-                <select class="form-control choose_id">
-                    <option id="1">消费ID</option>
-                    <option id="2">会员ID</option>
-                    <option id="3">会员姓名</option>
-                </select>
-            </div>
-        </div>
     </div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <table class="table table-hover table-striped">
@@ -161,6 +133,12 @@
                         <td>${rentInfo}</td>
                         <td>${rentInfo}</td>
                         <td>
+                            <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                            <a href="${pageContext.request.contextPath}/rentInfo/toUpdateRentInfo/${rentInfo.rentInfoId}" class="modify-text">修改</a>
+                            &nbsp;| &nbsp;
                             <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -168,7 +146,7 @@
                                       d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                             </svg>
                             <a href="${pageContext.request.contextPath}/rentInfo/deleteRentInfo/${rentInfo.rentInfoId}"
-                               onclick="return confirm('确定删除吗?')">删除</a>
+                               onclick="return confirm('确定删除吗?')" class="modify-text">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -71,6 +71,10 @@
             <input type="text" class="form-control" name="hireId" required>
         </div>
         <div class="form-group">
+            <label>租房编号</label>
+            <input type="text" class="form-control" name="houseId" required>
+        </div>
+        <div class="form-group">
             <label>组房起始日期</label>
             <input type="text" class="form-control" name="rentStartDate" required>
         </div>
