@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pojo.rentInfo;
-import pojo.rentPerson;
 import service.rentInfoService;
 
 import java.util.ArrayList;
@@ -89,26 +88,12 @@ public class rentInfoController {
         List<rentInfo> list = new ArrayList<rentInfo>();
         list.add(rp);
         if(rp==null){
-            list = riservice.GetRentPersonList();
+            list = riservice.GetRentInfoList();
             model.addAttribute("error","无搜索结果");
-            return "forward:/rentPerson/allRentPersonLimit?startIndex=1";
+            return "forward:/rentInfo/allRentInfoLimit?startIndex=1";
         }
-        model.addAttribute("rentPersonList",list);
-        return "rentPerson/allRentPerson";
-    }
-
-    //rentPerson query userName   limit
-    @RequestMapping("/getRentPersonByNameLimit")
-    public String getRentPersonByNameLimit(String uname, Integer startIndex, Integer pageSize, Model model){
-        PageInfo pageInfo = rpservice.GetRentPersonByNameListLimit(uname,startIndex,pageSize);
-        if(pageInfo.getTotal()==0){
-            List<rentPerson> list = rpservice.GetRentPersonList();
-            pageInfo = new PageInfo(list);
-            model.addAttribute("error","无搜索结果");
-        }
-        model.addAttribute("RentPersonList",pageInfo.getList());
-        model.addAttribute("pageinfo",pageInfo);
-        return "rentPerson/allRentPerson";
+        model.addAttribute("rentInfoList",list);
+        return "rentInfo/allRentInfo";
     }
 
 
