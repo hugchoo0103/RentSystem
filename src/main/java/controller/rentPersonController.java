@@ -48,7 +48,7 @@ public class rentPersonController {
 
     @RequestMapping("/addRentPerson")
     public String addRentPerson(rentPerson rp,Model model){
-        if(rpservice.GetRentPersonById(rp.getUserID())!=null){
+        if(rpservice.GetRentPersonById(rp.getUserId())!=null){
             model.addAttribute("rentPersonerror","rentPerson已存在");
             return "rentPerson/addRentPerson";
         }
@@ -58,8 +58,8 @@ public class rentPersonController {
 
 
     //rentPerson modify
-    @RequestMapping("/toUpdateRentPerson/{userID}")
-    public String toUpdateRentPerson(@PathVariable("userID") Integer uid, Model model){
+    @RequestMapping("/toUpdateRentPerson/{userId}")
+    public String toUpdateRentPerson(@PathVariable("userId") Integer uid, Model model){
         rentPerson rp = rpservice.GetRentPersonById(uid);
         model.addAttribute("upRentPerson",rp);
         return "rentPerson/updateRentPerson";
@@ -80,9 +80,9 @@ public class rentPersonController {
     }
 
 
-    //rentPerson query userID
-    @RequestMapping("/getRentPersonByID")
-    public String getRentPersonByID(Integer uid,Model model){
+    //rentPerson query userId
+    @RequestMapping("/getRentPersonById")
+    public String getRentPersonById(Integer uid,Model model){
         rentPerson rp = rpservice.GetRentPersonById(uid);
         List<rentPerson> list = new ArrayList<rentPerson>();
         list.add(rp);

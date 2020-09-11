@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.rentPersonDao">
+
+    <select id="GetRentPersonById" resultType="rentPerson">
+        select * from rentsystem.rentperson where userId=#{userId}
+    </select>
+
+    <insert id="AddRentPerson" parameterType="rentPerson">
+        insert into  rentsystem.rentperson(userId,userName,sex,phone,email)
+        values (#{userId},#{userName},#{sex},#{phone},#{email})
+    </insert>
+
+    <update id="UpdateRentPerson" parameterType="rentPerson">
+        update  rentsystem.rentperson
+        <set>
+            <if test="userId!=null">
+                userId=#{userId}
+            </if>
+            <if test="userName!=null">
+                userName=#{userName}
+            </if>
+            <if test="sex!=null">
+                sex=#{sex}
+            </if>
+            <if test="phone!=null">
+                phone=#{phone}
+            </if>
+            <if test="email!=null">
+                email=#{email}
+            </if>
+        </set>
+        where userId=#{userId}
+    </update>
+
+    <delete id="DeleteRentPersonById">
+        delete from rentsystem.rentperson where userId=#{userId}
+    </delete>
+
+    <select id="GetRentPersonList" resultType="pojo.rentPerson">
+        select * from rentsystem.rentperson order by userId
+    </select>
+
+    <select id="GetRentPersonByName" resultType="pojo.rentPerson">
+        select * from rentsystem.rentperson where userName=#{userName} order by userID
+    </select>
+
+</mapper>

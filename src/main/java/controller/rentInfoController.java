@@ -49,7 +49,7 @@ public class rentInfoController {
 
     @RequestMapping("/addRentInfo")
     public String addRentInfo(rentInfo ri,Model model){
-        if(riservice.GetRentInfoById(ri.getRentInfoID())!=null){
+        if(riservice.GetRentInfoById(ri.getRentInfoId())!=null){
             model.addAttribute("rentInfoerror","rentInfo已存在");
             return "rentInfo/addRentInfo";
         }
@@ -59,8 +59,8 @@ public class rentInfoController {
 
 
     //rentInfo modify
-    @RequestMapping("/toUpdateRentInfo/{rentInfoID}")
-    public String toUpdateRentInfo(@PathVariable("rentInfoID") Integer rid, Model model){
+    @RequestMapping("/toUpdateRentInfo/{rentInfoId}")
+    public String toUpdateRentInfo(@PathVariable("rentInfoId") Integer rid, Model model){
         rentInfo ri = riservice.GetRentInfoById(rid);
         model.addAttribute("upRentInfo",ri);
         return "rentInfo/updateRentInfo";
@@ -81,9 +81,9 @@ public class rentInfoController {
     }
 
 
-    //rentInfo query rentInfoID
-    @RequestMapping("/getRentInfoByID")
-    public String getRentInfoByID(Integer rid, Model model){
+    //rentInfo query rentInfoId
+    @RequestMapping("/getRentInfoById")
+    public String getRentInfoById(Integer rid, Model model){
         rentInfo rp = riservice.GetRentInfoById(rid);
         List<rentInfo> list = new ArrayList<rentInfo>();
         list.add(rp);

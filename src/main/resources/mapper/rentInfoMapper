@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.rentInfoDao">
+
+    <select id="GetRentInfoById" resultType="rentInfo">
+        select * from rentsystem.rentinfo where rentInfoId=#{rentInfoId}
+    </select>
+
+    <insert id="AddRentInfo" parameterType="rentInfo">
+        insert into  rentsystem.rentinfo(rentInfoId,rentInfoNo,empName,houseId,rentId,
+        rentName,rentPhone,hireId,hireName,hirePhone,payMoney,rentTime,rentStartDate,
+        rentEndDate,payDate,remark)
+        values (#{rentInfoId},#{rentInfoNo},#{empName},#{houseId}
+        ,#{rentId},#{rentName},#{rentPhone},#{hireId}
+        ,#{hireName},#{hirePhone},#{payMoney},#{rentTime}
+        ,#{rentStartDate},#{rentEndDate},#{payDate},#{remark})
+    </insert>
+
+    <update id="UpdateRentInfo" parameterType="rentInfo">
+        update  rentsystem.rentinfo
+        <set>
+            <if test="rentInfoId!=null">
+                rentInfoId=#{rentInfoId}
+            </if>
+            <if test="rentInfoNo!=null">
+                rentInfoNo=#{rentInfoNo}
+            </if>
+            <if test="empName!=null">
+                empName=#{empName}
+            </if>
+            <if test="houseId!=null">
+                houseId=#{houseId}
+            </if>
+            <if test="rentId!=null">
+                rentId=#{rentId}
+            </if>
+            <if test="rentName!=null">
+                rentName=#{rentName}
+            </if>
+            <if test="rentPhone!=null">
+                rentPhone=#{rentPhone}
+            </if>
+            <if test="hireId!=null">
+                hireId=#{hireId}
+            </if>
+            <if test="hireName!=null">
+                hireName=#{hireName}
+            </if>
+            <if test="hirePhone!=null">
+                hirePhone=#{hirePhone}
+            </if>
+            <if test="payMoney!=null">
+                payMoney=#{payMoney}
+            </if>
+            <if test="rentTime!=null">
+                rentTime=#{rentTime}
+            </if>
+            <if test="rentStartDate!=null">
+                rentStartDate=#{rentStartDate}
+            </if>
+            <if test="rentEndDate!=null">
+                rentEndDate=#{rentEndDate}
+            </if>
+            <if test="payDate!=null">
+                payDate=#{payDate}
+            </if>
+            <if test="remark!=null">
+                remark=#{remark}
+            </if>
+        </set>
+        where rentInfoId=#{rentInfoId}
+    </update>
+
+    <delete id="DeleteRentInfoById">
+        delete from rentsystem.rentinfo where rentInfoId=#{rentInfoId}
+    </delete>
+
+    <select id="GetRentInfoList" resultType="pojo.rentInfo">
+        select * from rentsystem.rentinfo order by rentInfoId
+    </select>
+
+</mapper>

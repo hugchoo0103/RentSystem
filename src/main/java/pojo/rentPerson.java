@@ -3,49 +3,36 @@ package pojo;
 import java.io.Serializable;
 
 public class rentPerson implements Serializable {
-    private int userID;
-    private String rentPersonNo;
+    private int userId;
+    //private String rentPersonNo;
     private String userName;
     private String sex;
     private String phone;
-    private String homePhone;
+    //private String homePhone;
     private String email;
-    private String qq;
-    private String cardID;
-    private int houseID;
-    private String recordDate;
+    //private String qq;
+    //private String cardId;
+    //private int houseId;
+    //private String recordDate;
+
 
     @Override
     public String toString() {
         return "rentPerson{" +
-                "userID=" + userID +
-                ", rentPersonNo='" + rentPersonNo + '\'' +
+                "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
-                ", homePhone='" + homePhone + '\'' +
                 ", email='" + email + '\'' +
-                ", qq='" + qq + '\'' +
-                ", cardID='" + cardID + '\'' +
-                ", houseID=" + houseID +
-                ", recordDate='" + recordDate + '\'' +
                 '}';
     }
 
-    public int getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getRentPersonNo() {
-        return rentPersonNo;
-    }
-
-    public void setRentPersonNo(String rentPersonNo) {
-        this.rentPersonNo = rentPersonNo;
+        this.userId = userID;
     }
 
     public String getUserName() {
@@ -72,51 +59,11 @@ public class rentPerson implements Serializable {
         this.phone = phone;
     }
 
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getCardID() {
-        return cardID;
-    }
-
-    public void setCardID(String cardID) {
-        this.cardID = cardID;
-    }
-
-    public int getHouseID() {
-        return houseID;
-    }
-
-    public void setHouseID(int houseID) {
-        this.houseID = houseID;
-    }
-
-    public String getRecordDate() {
-        return recordDate;
-    }
-
-    public void setRecordDate(String recordDate) {
-        this.recordDate = recordDate;
     }
 }

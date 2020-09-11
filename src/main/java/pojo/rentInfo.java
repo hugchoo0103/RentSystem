@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.io.StringReader;
 
 public class rentInfo implements Serializable {
-    private int rentInfoID;
+    private int rentInfoId;
     private String rentInfoNo;
     private String empName;
-    private int houseID;
-    private int rentID;
+    private int houseId;
+    private int rentId;
     private String rentName;
     private String rentPhone;
-    private int hireID;
+    private int hireId;
     private String hireName;
     private String hirePhone;
     private float payMoney;
@@ -24,14 +24,14 @@ public class rentInfo implements Serializable {
     @Override
     public String toString() {
         return "rentInfo{" +
-                "rentInfoID=" + rentInfoID +
+                "rentInfoId=" + rentInfoId +
                 ", rentInfoNo='" + rentInfoNo + '\'' +
                 ", empName='" + empName + '\'' +
-                ", houseID=" + houseID +
-                ", rentID=" + rentID +
+                ", houseId=" + houseId +
+                ", rentId=" + rentId +
                 ", rentName='" + rentName + '\'' +
                 ", rentPhone='" + rentPhone + '\'' +
-                ", hireID=" + hireID +
+                ", hireId=" + hireId +
                 ", hireName='" + hireName + '\'' +
                 ", hirePhone='" + hirePhone + '\'' +
                 ", payMoney=" + payMoney +
@@ -43,12 +43,12 @@ public class rentInfo implements Serializable {
                 '}';
     }
 
-    public int getRentInfoID() {
-        return rentInfoID;
+    public int getRentInfoId() {
+        return rentInfoId;
     }
 
-    public void setRentInfoID(int rentInfoID) {
-        this.rentInfoID = rentInfoID;
+    public void setRentInfoId(int rentInfoId) {
+        this.rentInfoId = rentInfoId;
     }
 
     public String getRentInfoNo() {
@@ -67,20 +67,20 @@ public class rentInfo implements Serializable {
         this.empName = empName;
     }
 
-    public int getHouseID() {
-        return houseID;
+    public int getHouseId() {
+        return houseId;
     }
 
-    public void setHouseID(int houseID) {
-        this.houseID = houseID;
+    public void setHouseId(int houseId) {
+        this.houseId = houseId;
     }
 
-    public int getRentID() {
-        return rentID;
+    public int getRentId() {
+        return rentId;
     }
 
-    public void setRentID(int rentID) {
-        this.rentID = rentID;
+    public void setRentId(int rentId) {
+        this.rentId = rentId;
     }
 
     public String getRentName() {
@@ -99,12 +99,12 @@ public class rentInfo implements Serializable {
         this.rentPhone = rentPhone;
     }
 
-    public int getHireID() {
-        return hireID;
+    public int getHireId() {
+        return hireId;
     }
 
-    public void setHireID(int hireID) {
-        this.hireID = hireID;
+    public void setHireId(int hireId) {
+        this.hireId = hireId;
     }
 
     public String getHireName() {
