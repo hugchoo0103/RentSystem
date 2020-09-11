@@ -53,4 +53,12 @@ public class rentPersonServiceImpl implements rentPersonService {
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
+
+    @Override
+    public PageInfo GetRentPersonByNameListLimit(String uname, Integer startIndex, Integer pageSize) {
+        PageHelper.startPage(startIndex,pageSize);
+        List<rentPerson> list = rpdao.GetRentPersonByName(uname);
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
 }
