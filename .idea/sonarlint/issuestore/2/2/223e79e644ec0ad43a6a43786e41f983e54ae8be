@@ -1,9 +1,0 @@
-
-l	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(À Œ^8¦„ÙßÇ.
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®»ø‘ýÿÿÿÿ8¦„ÙßÇ.
-i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Íƒö8¦„ÙßÇ.
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿòö½øÿÿÿÿ8¦„ÙßÇ.
-N
-java:S1128",Remove this unused import 'pojo.rentPerson'.(õ‘’‰þÿÿÿÿ8¦„ÙßÇ.
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜–Ñõ8¦„ÙßÇ.
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·è¾ãþÿÿÿÿ8¦„ÙßÇ.

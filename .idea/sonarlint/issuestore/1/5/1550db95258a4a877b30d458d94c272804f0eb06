@@ -1,8 +1,0 @@
-
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(âóÃ’ùÿÿÿÿ8·¯ßÇ.
-L
-java:S3740$"/Provide the parametrized type for this generic.(Œ½—Æ8·¯ßÇ.
-{
-java:S2293X"YReplace the type specification in this constructor call with the diamond operator ("<>").(¤€¾Äúÿÿÿÿ8·¯ßÇ.
-U
-java:S1854["8Remove this useless assignment to local variable "list".(ü‹©Ş8·¯ßÇ.
