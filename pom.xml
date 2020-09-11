@@ -17,7 +17,7 @@
         <junit.version>4.11</junit.version>
         <xerces.version>2.9.1</xerces.version>
 
-        <spring.version>spring-5.2.5.RELEASE</spring.version>
+        <spring.version>5.1.9.RELEASE</spring.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
         <slf4j.version>1.7.5</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
