@@ -15,7 +15,6 @@ import service.houseService;
 import service.rentInfoService;
 import service.rentPersonService;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,7 +59,7 @@ public class rentInfoController {
     }
 
     @RequestMapping("/addRentInfo")
-    public String addRentInfo(rentInfo ri, Model model) throws ParseException {
+    public String addRentInfo(rentInfo ri, Model model){
         if (riservice.GetRentInfoById(ri.getRentInfoId()) != null) {
             model.addAttribute("rentInfoerror", "rentInfo已存在");
             return "rentInfo/addRentInfo";
@@ -93,7 +92,7 @@ public class rentInfoController {
     }
 
     @RequestMapping("/updateRentInfo")
-    public String updateRentInfo(rentInfo ri) throws ParseException {
+    public String updateRentInfo(rentInfo ri){
         Date d1=ri.getRentStartDate();
         Date d2=ri.getRentEndDate();
         float rent = hsservice.GetHouseById(ri.getHouseId()).getRentPrice();
@@ -114,8 +113,8 @@ public class rentInfoController {
 
 
     //rentInfo --
-    @RequestMapping("/deleteRentInfo/{rid}")
-    public String deleteRentInfo(@PathVariable("rid") Integer rid, Model model) {
+    @RequestMapping("/deleteRentInfo/{rentInfoId}")
+    public String deleteRentInfo(@PathVariable("rentInfoId") Integer rid, Model model) {
         riservice.DeleteRentInfoById(rid);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
@@ -123,8 +122,8 @@ public class rentInfoController {
 
     //rentInfo query rentInfoId
     @RequestMapping("/getRentInfoById")
-    public String getRentInfoById(Integer rid, Model model) {
-        rentInfo rp = riservice.GetRentInfoById(rid);
+    public String getRentInfoById(Integer rentInfoId, Model model) {
+        rentInfo rp = riservice.GetRentInfoById(rentInfoId);
         List<rentInfo> list = new ArrayList<rentInfo>();
         list.add(rp);
         if (rp == null) {

@@ -99,12 +99,9 @@
     <script>
         var regNumber = new RegExp("^[0-9]*$"); //正则表达式：纯数字
         var regNumber2 = new RegExp("^(0\\.(?!0+$)\\d{1,4}|^[1-9][0-9]{0,4}(\\.\\d{0,1})?)$");
-        date_time();
-
         function judgeTime(startTime, endTime) {
             return new Date(endTime).getTime() - new Date(startTime).getTime();
         }
-
         function myFunction() {
             document.getElementById("error").innerHTML = "";
         }
@@ -149,25 +146,6 @@
             })
         })
 
-        setInterval("date_time()", 1000);
-
-        function date_time() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1;
-            var day = date.getDate();
-            var hour = date.getHours();
-            var minutes = date.getMinutes();
-            var seconds = date.getSeconds();
-            if (parseInt(seconds) >= 0 && parseInt(seconds) < 10) {
-                seconds = "0" + seconds;
-            }
-            $("#date_time").text(year + "/" + month + "/" + day + "   " + hour + ":" + minutes + ":" + seconds);
-        }
-
-        jQuery('#datetimepicker').datetimepicker({
-            format: 'Y-m-d H:i:s'      //这是设置日历格式
-        });
     </script>
 </head>
 <body>

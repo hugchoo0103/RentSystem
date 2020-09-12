@@ -113,14 +113,12 @@
     <script>
         var regNumber = new RegExp("^[0-9]*$"); //正则表达式：纯数字
         var regNumber2 = new RegExp("^(0\\.(?!0+$)\\d{1,4}|^[1-9][0-9]{0,4}(\\.\\d{0,1})?)$");
-        date_time();
         function judgeTime(startTime,endTime){
             return new Date(endTime).getTime()-new Date(startTime).getTime();
         }
         function myFunction() {
             document.getElementById("error").innerHTML = "";
         }
-
         $(function () {
             $("#button").click(function () {
                 if (document.riform.rentId.value == "" || document.riform.rentId.value == null) {
@@ -161,23 +159,6 @@
             })
         })
 
-        setInterval("date_time()", 1000);
-        function date_time() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth()+1;
-            var day = date.getDate();
-            var hour = date.getHours();
-            var minutes = date.getMinutes();
-            var seconds = date.getSeconds();
-            if(parseInt(seconds) >= 0 && parseInt(seconds) < 10) {
-                seconds = "0"+seconds;
-            }
-            $("#date_time").text(year+"/"+month+"/"+day+"   "+hour+":"+minutes+":"+seconds);
-        }
-        jQuery('#datetimepicker').datetimepicker({
-            format:'Y-m-d H:i:s'      //这是设置日历格式
-        });
     </script>
 </head>
 <body>
@@ -266,7 +247,7 @@
         </div>
         <div class="form-group">
             <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                <input type="text" placeholder="支付租费时间" name="PayDate" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
+                <input type="text" placeholder="支付租费时间" name="payDate" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
                 <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar">
                         <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
@@ -292,13 +273,6 @@
         </center>
     </form>
 
-    <script type="text/javascript" language="javascript">
-        moment.tz.serDefault('Asia/Shanghai');
-        $('#datetimepicker1').data('DateTimePicker').timeZone('Asia/Shanghai');
-        $('#datetimepicker1').datetimepicker({sideBySide: true});
-        $('#datetimepicker1').data('DateTimePicker').format('YYYY-MM-DD');
-        $('#datetimepicker1').data('DateTimePicker').date(moment());
-    </script>
 </div>
 </body>
 </html>
