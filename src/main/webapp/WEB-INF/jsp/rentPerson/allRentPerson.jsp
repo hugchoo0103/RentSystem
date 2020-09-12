@@ -182,7 +182,7 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <a href="${pageContext.request.contextPath}/admin/logout">
+            <a href="${pageContext.request.contextPath}/login/logout">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
             </a>
         </form>
