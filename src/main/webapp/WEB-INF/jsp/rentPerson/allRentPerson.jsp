@@ -165,7 +165,7 @@
                     </svg>
                     Home &nbsp&nbsp</a>
             </li>
-            <li class="nav-item navbar-background active">
+            <li class="nav-item navbar-background">
                 <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1">&nbsp&nbsp租客&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
