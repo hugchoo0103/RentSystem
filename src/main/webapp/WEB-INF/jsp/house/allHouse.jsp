@@ -102,8 +102,8 @@
                     return false;
                 }
                 else{
-                    var newUrl = '${pageContext.request.contextPath}/house/getHouseByRank';    //设置新提交地址
-                    var newName = 'houseRank';
+                    var newUrl = '${pageContext.request.contextPath}/house/getHouseByType';    //设置新提交地址
+                    var newName = 'houseType';
                     var input= $("[name='houseId']").val();
                     $('.choose_id').val();    //获取选中的值
                     var choose = $('.choose_id option:selected').attr("id");    //获取选中的option的id的值
@@ -167,7 +167,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item navbar-background">
 
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">&nbsp&nbsp
+                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit">&nbsp&nbsp
                     <svg class="bi bi-house-door" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -176,14 +176,15 @@
                     </svg>
                     Home &nbsp&nbsp</a>
             </li>
-            <li class="nav-item navbar-background active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit?startIndex=1">&nbsp&nbsp舞蹈室管理&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/apply/allApplyLimit?startIndex=1">&nbsp&nbsp舞蹈室申请&nbsp&nbsp</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1">&nbsp&nbsp租客&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/journal/allJournalLimit?startIndex=1">&nbsp&nbsp消费记录&nbsp&nbsp</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentInfo/allRentInfoLimit?startIndex=1">&nbsp&nbsp租赁信息&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/?startIndex=1">&nbsp&nbsp管理员&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
                 <a class="nav-link" href="${pageContext.request.contextPath}/hirePerson/allHirePersonLimit?startIndex=1">&nbsp&nbsp房主&nbsp&nbsp</a>
@@ -193,7 +194,7 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <a href="${pageContext.request.contextPath}/logout">
+            <a href="${pageContext.request.contextPath}/login/logout">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
             </a>
         </form>
@@ -205,7 +206,7 @@
             <div class="page-header" >
                 <br>
                 <h1 style="font-family: Candara">
-                    DANCENROOM INFO
+                    HOUSE INFO
                 </h1>
                 <br>
             </div>

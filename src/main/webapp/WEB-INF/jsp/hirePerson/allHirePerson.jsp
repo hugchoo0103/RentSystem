@@ -155,7 +155,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item navbar-background">
 
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">&nbsp&nbsp
+                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit">&nbsp&nbsp
                     <svg class="bi bi-house-door" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -164,20 +164,21 @@
                     </svg>
                     Home &nbsp&nbsp</a>
             </li>
-            <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/danceroom/allDanceroomLimit?startIndex=1">&nbsp&nbsp舞蹈室管理&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/apply/allApplyLimit?startIndex=1">&nbsp&nbsp舞蹈室申请&nbsp&nbsp</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1">&nbsp&nbsp租客&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/journal/allJournalLimit?startIndex=1">&nbsp&nbsp消费记录&nbsp&nbsp</a>
-            </li>
-            <li class="nav-item navbar-background active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/hirePerson/allHirePersonLimit?startIndex=1">&nbsp&nbsp房主资料&nbsp&nbsp</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentInfo/allRentInfoLimit?startIndex=1">&nbsp&nbsp租赁信息&nbsp&nbsp</a>
             </li>
             <li class="nav-item navbar-background">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/allAdminLimit?startIndex=1">&nbsp&nbsp管理员资料&nbsp&nbsp</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/?startIndex=1">&nbsp&nbsp管理员&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/hirePerson/allHirePersonLimit?startIndex=1">&nbsp&nbsp房主&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit?startIndex=1">&nbsp&nbsp房屋&nbsp&nbsp</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">

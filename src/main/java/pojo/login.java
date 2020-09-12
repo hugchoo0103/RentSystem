@@ -1,6 +1,8 @@
 package pojo;
 
-public class login {
+import java.io.Serializable;
+
+public class login implements Serializable {
     private int idLogin;
     private String userName;
     private String password;

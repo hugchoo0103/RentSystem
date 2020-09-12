@@ -1,6 +1,8 @@
 package pojo;
 
-public class hirePerson {
+import java.io.Serializable;
+
+public class hirePerson implements Serializable {
     private int hireId;
     private String userName;
     private String sex;

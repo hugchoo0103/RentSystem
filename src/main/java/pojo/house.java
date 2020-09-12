@@ -1,6 +1,8 @@
 package pojo;
 
-public class house {
+import java.io.Serializable;
+
+public class house implements Serializable {
     private int houseId;
     private String houseType;
     private int houseStatus;
