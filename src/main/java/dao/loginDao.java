@@ -7,8 +7,7 @@ import pojo.login;
 @Repository
 public interface loginDao {
 
-
-    @Select("select * from login where userName=#{userName} and password=#{password}")
-     login getUserByName(@Param("userName") String userName, @Param("password") String password);
+    @Select("select * from login where loginId=#{loginId} and password=#{password}")
+     login getUserByName(@Param("loginId") int loginId, @Param("password") String password);
 
 }

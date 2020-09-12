@@ -3,5 +3,5 @@ package service;
 import pojo.login;
 
 public interface loginService {
-    login getUserByName(String userName,String password);
+    login getUserById(int loginId,String password);
 }

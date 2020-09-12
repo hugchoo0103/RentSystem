@@ -89,22 +89,22 @@
         }
         $(function () {
             $("#button").click(function () {
-                if (document.loginform.loginId.value==""||document.loginform.loginId.value==null)
+                if (document.loginform.userId.value==""||document.loginform.userId.value==null)
                 {
                     window.alert("管理员账户不能为空！");
                     return false;
                 }
-                else if (document.loginform.password.value==""||document.loginform.password.value==null)
+                else if (document.loginform.userPwd.value==""||document.loginform.userPwd.value==null)
                 {
                     window.alert("密码不能为空！");
                     return false;
                 }
                 else{
-                    if (document.loginform.loginId.value.length!=7||!regNumber.test(document.loginform.loginId.value.length)){
+                    if (document.loginform.userId.value.length!=7||!regNumber.test(document.loginform.userId.value.length)){
                         window.alert("请输入7位数字的管理员账户！");
                         return false;
                     }
-                    else if (document.loginform.password.value.length>16||document.loginform.password.value.length<6){
+                    else if (document.loginform.userPwd.value.length>16||document.loginform.userPwd.value.length<6){
                         window.alert("请输入6~16位密码！");
                         return false;
                     }
@@ -119,17 +119,17 @@
 <div class="container">
     <form class="form-signin" action="${pageContext.request.contextPath}/login/login" method="post" id="loginform" name="loginform">
         <div class="text-center mb-4">
-            <h1 class="h1 mb-3 font-weight-normal">房屋租零管理系统</h1>
+            <h1 class="h1 mb-3 font-weight-normal">X-DANCE STUDIO</h1>
             <br>
         </div>
         <div class="form-label-group">
             <label for="inputID">Admin ID</label>
-            <input type="text" id="inputID" name="loginId" class="form-control" placeholder="请输入管理员账户" oninput="myFunction()" required autofocus>
+            <input type="text" id="inputID" name="userId" class="form-control" placeholder="请输入管理员账户" oninput="myFunction()" required autofocus>
         </div>
         <br/>
         <div class="form-label-group">
             <label for="inputPassword">Password</label>
-            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="请输入账户密码" oninput="myFunction()" required>
+            <input type="password" id="inputPassword" name="userPwd" class="form-control" placeholder="请输入账户密码" oninput="myFunction()" required>
         </div>
         <br />
         <center>
@@ -140,7 +140,7 @@
             <button id="button" class="login-button" type="submit">Sign in</button>
 <%--            <button onclick="window.location.href='${pageContext.request.contextPath}/index.jsp'" class="back-button" type="button" style="margin-top:20px;"  id="returnIndex" >Back</button>--%>
         </center>
-        <p class="mt-5 mb-3 text-muted text-center">&copy;房屋租零管理系统</p>
+        <p class="mt-5 mb-3 text-muted text-center">&copy;Dance Studio</p>
     </form>
 </div>
 </body>

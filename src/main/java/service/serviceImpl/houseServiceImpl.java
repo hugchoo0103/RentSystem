@@ -1,10 +1,12 @@
 package service.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import dao.houseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.house;
+import pojo.rentInfo;
 import service.houseService;
 
 import java.util.List;
@@ -41,6 +43,9 @@ public class houseServiceImpl implements houseService {
 
     @Override
     public PageInfo GetHouseListLimit(Integer startIndex, Integer pageSize) {
-        return null;
+        PageHelper.startPage(startIndex,pageSize);
+        List<house> list = houseDao.GetHouseList();
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
     }
 }

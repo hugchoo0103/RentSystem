@@ -10,11 +10,11 @@ import java.util.List;
 
 @Repository
 public interface houseDao {
-    @Insert("insert into house(houseType,houseState,rentPrice,houseRemark) values(#{houseType},#{houseState},#{rentPrice},#{houseRemark})")
+    @Insert("insert into house(houseType,houseStatus,rentPrice,houseRemark) values(#{houseType},#{houseStatus},#{rentPrice},#{houseRemark})")
     void AddHouse (house ri);
 
     //house  CRUD  U
-    @Update("update house set houseType=#{housetype},houseState=#{houseState},rentPrice=#{rentPrice},houseRemark=#{houseRemark} where houseId=#{houseId}")
+    @Update("update house set houseType=#{housetype},houseStatus=#{houseStatus},rentPrice=#{rentPrice},houseRemark=#{houseRemark} where houseId=#{houseId}")
     void UpdateHouse (house ri);
 
     //house  CRUD  D   通过houseId删除指定house

@@ -3,7 +3,7 @@ package pojo;
 public class house {
     private int houseId;
     private String houseType;
-    private int houseState;
+    private int houseStatus;
     private float rentPrice;
     private String housRemark;
 
@@ -24,11 +24,11 @@ public class house {
     }
 
     public int getHouseState() {
-        return houseState;
+        return houseStatus;
     }
 
-    public void setHouseState(int houseState) {
-        this.houseState = houseState;
+    public void setHouseState(int houseStatus) {
+        this.houseStatus = houseStatus;
     }
 
     public float getRentPrice() {
@@ -52,7 +52,7 @@ public class house {
         return "house{" +
                 "houseId=" + houseId +
                 ", houseType='" + houseType + '\'' +
-                ", houseState=" + houseState +
+                ", houseStatus=" + houseStatus +
                 ", rentPrice=" + rentPrice +
                 ", housRemark='" + housRemark + '\'' +
                 '}';
