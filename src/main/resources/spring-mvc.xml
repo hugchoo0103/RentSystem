@@ -24,13 +24,13 @@
 
     <!--拦截器配置,拦截器是AOP思想的体现，不影响原来的业务;SpringMVC框架的工程才能使用。
         拦截器只会拦截访问的控制器方法，访问jsp/html/css/image/is不会进行拦截-->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <!--包括这个请求下面的所有请求-->
-            <mvc:mapping path="/**"/>
-            <bean class="config.MyInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash;包括这个请求下面的所有请求&ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <bean class="config.MyInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
 
     <!--    JSON 乱码问题 -->
     <mvc:annotation-driven >

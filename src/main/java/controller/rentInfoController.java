@@ -11,10 +11,15 @@ import pojo.hirePerson;
 import pojo.rentInfo;
 import pojo.rentPerson;
 import service.hirePersonService;
+import service.houseService;
 import service.rentInfoService;
 import service.rentPersonService;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -22,8 +27,12 @@ import java.util.List;
 public class rentInfoController {
     @Autowired
     private rentInfoService riservice;
+    @Autowired
     private hirePersonService hpservice;
+    @Autowired
     private rentPersonService rpservice;
+    @Autowired
+    private houseService hsservice;
 
 
     //rentInfo query all
@@ -53,17 +62,24 @@ public class rentInfoController {
     }
 
     @RequestMapping("/addRentInfo")
-    public String addRentInfo(rentInfo ri, Model model) {
+    public String addRentInfo(rentInfo ri, Model model) throws ParseException {
         if (riservice.GetRentInfoById(ri.getRentInfoId()) != null) {
             model.addAttribute("rentInfoerror", "rentInfo已存在");
             return "rentInfo/addRentInfo";
         }
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d1=df.parse(ri.getRentStartDate());
+        Date d2=df.parse(ri.getRentEndDate());
+        float rent = hsservice.GetHouseById(ri.getHouseId()).getRentPrice();
+        ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
+
         hirePerson hp = hpservice.GetHirePersonById(ri.getHireId());
         rentPerson rp = rpservice.GetRentPersonById(ri.getRentId());
         ri.setHireName(hp.getUserName());
         ri.setHirePhone(hp.getPhone());
         ri.setRentName(rp.getUserName());
         ri.setRentPhone(rp.getPhone());
+
         riservice.AddRentInfo(ri);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
@@ -78,7 +94,20 @@ public class rentInfoController {
     }
 
     @RequestMapping("/updateRentInfo")
-    public String updateRentInfo(rentInfo ri) {
+    public String updateRentInfo(rentInfo ri) throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d1=df.parse(ri.getRentStartDate());
+        Date d2=df.parse(ri.getRentEndDate());
+        float rent = hsservice.GetHouseById(ri.getHouseId()).getRentPrice();
+        ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
+
+        hirePerson hp = hpservice.GetHirePersonById(ri.getHireId());
+        rentPerson rp = rpservice.GetRentPersonById(ri.getRentId());
+        ri.setHireName(hp.getUserName());
+        ri.setHirePhone(hp.getPhone());
+        ri.setRentName(rp.getUserName());
+        ri.setRentPhone(rp.getPhone());
+
         riservice.UpdateRentInfo(ri);
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }

@@ -23,16 +23,16 @@
         update  rentsystem.rentinfo
         <set>
             <if test="houseId!=null">
-                houseId=#{houseId}
+                houseId=#{houseId},
             </if>
             <if test="rentId!=null">
-                rentId=#{rentId}
+                rentId=#{rentId},
             </if>
             <if test="hireId!=null">
-                hireId=#{hireId}
+                hireId=#{hireId},
             </if>
             <if test="rentStartDate!=null">
-                rentStartDate=#{rentStartDate}
+                rentStartDate=#{rentStartDate},
             </if>
             <if test="rentEndDate!=null">
                 rentEndDate=#{rentEndDate}

@@ -14,65 +14,171 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="http://localhost:9090/favicon.ico"/>
+    <style>
+        body{
+            background-image: url("../webapp/image/steep_desktop.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .container {
+            width: 100%;
+            height: auto;
+            padding-bottom: 30px;
+            margin-top: 0px;
+            background: rgba(255,255,240, 0.8);
+        }
+        .modify-text:hover{
+            background: gray;
+            color: white;
+        }
+        .modify-text{
+            color: black;
+        }
+        .button-background{
+            background: rgba(255,255,240, 0.75);
 
-    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-          rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css"
-          rel="stylesheet">
+        }
+        .default-button {
+            width: 60px; /* 宽度 */
+            height: 30px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background:#FFFFF0; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline:white; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: #696969; /* 字体颜色 */
+            font-size: 14px; /* 字体大小 */
+        }
+        .default-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+            background: #F0F8FF;
+        }
+        .add-button {
+            width: 80px; /* 宽度 */
+            height: 30px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 14px; /* 字体大小 */
+        }
+        .add-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+            background: #5599FF;
+        }
+        td
+        {font-family:'华文细黑';font-size:15px;color:#626262;}
+        .navbar-background:hover{
+            background: gray;
+            color: #ffffff;
+        }
+    </style>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.25.3/locale/zh-hk.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/moment-timezone/0.5.31/moment-timezone.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        date_time();
+        setInterval("date_time()", 1000);
+        function date_time() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            if(parseInt(seconds) >= 0 && parseInt(seconds) < 10) {
+                seconds = "0"+seconds;
+            }
+            $("#date_time").text(year+"/"+month+"/"+day+"   "+hour+":"+minutes+":"+seconds);
+        }
+        $(function () {
+            var regNumber = new RegExp("^[0-9]*$");
+            $("#button").click(function () {
+                if (document.rpform.userId.value==""||document.rpform.userId.value==null)
+                {
+                    window.alert("搜索内容不能为空！");
+                    return false;
+                }
+                else{
+                    var newUrl = '${pageContext.request.contextPath}/rentPerson/getRentPersonByName';    //设置新提交地址
+                    var newName = 'userName';
+                    var input= $("[name='userId']").val();
+                    $('.choose_id').val();    //获取选中的值
+                    var choose = $('.choose_id option:selected').attr("id");    //获取选中的option的id的值
+                    if (choose == 1){
+                        if (document.rpform.userId.value.length>10||document.rpform.userId.value.length<2){
+                            window.alert("请输入正确的租客编号！");
+                            return false;
+                        }
+                    }
+                    if (choose == 2) {
+                        if (document.rpform.userId.value.length>10||document.rpform.userId.value.length<3){
+                            window.alert("请输入3-20个字符的租客姓名");
+                            return false;
+                        }
+                        else{
+                            $('input[name="userId"]').attr('name', newName);
+                            $("#rpform").attr('action', newUrl);    //通过jquery为action属性赋值
+                        }
+                    }
+                    $("#rpform").submit();    //提交ID为rpform的表单
+                }
 
+            })
+        })
+        function page() {
+            $("#pageform").submit();    //提交ID为pageform的表单
+        }
+        function hasPrePage() {
+            if(!${pageinfo.hasPreviousPage}){
+                var newUrl = '${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1';    //设置新提交地址
+                $("#prepage").attr('href', newUrl);    //通过jquery为href属性赋值
+            }
+        }
+        function hasNextPage() {
+            if(!${pageinfo.hasNextPage}){
+                var newUrl = '${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=${pageinfo.pages}';    //设置新提交地址
+                $("#nextpage").attr('href', newUrl);    //通过jquery为href属性赋值
+            }
+        }
+    </script>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/main">Rent System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+    <a class="navbar-brand" href="#">Rent System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left: 100px;">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">
+            <li class="nav-item navbar-background">
+
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">&nbsp&nbsp
                     <svg class="bi bi-house-door" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                               d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
                         <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                     </svg>
-                    Home <span class="sr-only">(current)</span></a>
+                    Home &nbsp&nbsp</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/toAddRentPerson">
-                    <svg class="bi bi-plus-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                              d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-                        <path fill-rule="evenodd"
-                              d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-                        <path fill-rule="evenodd"
-                              d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                    </svg>
-                    添加租客信息</a>
+            <li class="nav-item navbar-background active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1">&nbsp&nbsp租客&nbsp&nbsp</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/rentPerson/allRentPerson">
-                    <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                              d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
-                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
-                        <path fill-rule="evenodd"
-                              d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
-                    </svg>
-                    全部租客信息</a>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/rentInfo/allRentInfoLimit?startIndex=1">&nbsp&nbsp租赁信息&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/?startIndex=1">&nbsp&nbsp管理员&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/hirePerson/allHirePersonLimit?startIndex=1">&nbsp&nbsp房主&nbsp&nbsp</a>
+            </li>
+            <li class="nav-item navbar-background">
+                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit?startIndex=1">&nbsp&nbsp房屋&nbsp&nbsp</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
@@ -83,34 +189,43 @@
     </div>
 </nav>
 <div class="container">
-
-    <div class="row clearfix">
+    <div class="row clearfix" style="text-align: center;">
         <div class="col-md-12 column">
-            <div class="page-header">
-                <h1>
-                    <small>租客信息列表</small>
+            <div class="page-header" >
+                <br>
+                <h1 style="font-family: Candara">
+                    RentPerson
                 </h1>
+                <br>
             </div>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-md-2 column">
-            <div class="form-group" style="width: 120px;float: right">
+        <div class="col-md-10 column">
+            <div class="form-group" style="width: 120px;float: left">
                 <select class="form-control choose_id">
-                    <option id="1">租客ID</option>
+                    <option id="0" style="display: none;">--请选择--</option>
+                    <option id="1" selected>租客编号</option>
                     <option id="2">租客姓名</option>
                 </select>
             </div>
-        </div>
-        <div class="col-md-4 column">
-            <form id="journalform" class="form-inline"
-                  action="${pageContext.request.contextPath}/rentInfo/getRentInfoById" method="post" style="float: right">
-                <span style="color: crimson;font-weight: bold">${error}</span>
-                <input id="intype" type="text" name="rentInfoId" class="form-control mr-sm-2" type="search"
-                       placeholder="search condition" aria-label="Search">
-                <button id="button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form name="rpform" id="rpform" class="form-inline" action="${pageContext.request.contextPath}/rentPerson/getRentPersonById"
+                  method="post" style="float: left;margin-left: 10px;">
+                <input id="intype" type="text" name="userId" class="form-control mr-sm-2" type="search" value=""
+                       placeholder="请输入搜索条件"
+                       aria-label="Search">
+                <button id="cancel" class="default-button" type="reset">清空</button>
+                &nbsp;&nbsp;
+                <button id="button" class="default-button" type="submit">搜索</button>
+                &nbsp;&nbsp;
+                <span style="color: darkred;margin-left: 20px;">${error}</span>
+                <span style="color: darkred;margin-left: 20px;">${deleteRentPersonError}</span>
             </form>
+        </div>
+
+        <div class="col-md-2 column" style="float: right;">
+            <a class="btn add-button" href="${pageContext.request.contextPath}/rentPerson/toAddRentPerson">
+                + 添加</a>
         </div>
     </div>
 
@@ -160,31 +275,48 @@
 
     </div>
 
+    <div style="margin-top:25px;">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <form name="pageform" id="pageform" action="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit" method="post">
+                    <%-- 前端传递隐藏域 --%>
+                    <input type="hidden" id="start_index" name="startIndex">
+                    <input type="hidden" id="page_size" name="pageSize">
+                </form>
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=1" aria-label="Previous">&laquo;</a></li>
+                <li class="page-item">
+                    <a class="page-link" id="prepage" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=${pageinfo.pageNum-1}" aria-label="Previous" onclick="hasPrePage()">
+                        <span aria-hidden="true">&lt;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <c:forEach var="num"
+                           begin="${(pageinfo.pageNum-5>0?(pageinfo.pageNum-5):1)}"
+                           end="${(pageinfo.pageNum+5<=pageinfo.pages)?(pageinfo.pageNum+5):pageinfo.pages}">
+                    <li class="page-item">
+                        <a class="page-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=${num}">
+                            <c:choose>
+                                <c:when test="${num==pageinfo.pageNum}">
+                                    <span style="color: cadetblue">${num}</span>
+                                </c:when>
+                                <c:otherwise>${num}</c:otherwise>
+                            </c:choose>
+
+                        </a>
+                    </li>
+                </c:forEach>
+                <li class="page-item">
+                    <a class="page-link" id="nextpage" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=${pageinfo.pageNum+1}" aria-label="Next" onclick="hasNextPage()">
+                        <span aria-hidden="true">&gt;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/rentPerson/allRentPersonLimit?startIndex=${pageinfo.pages}" aria-label="Previous">&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
-<div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
 
 
 <script type="text/javascript" language="javascript">
@@ -194,13 +326,6 @@
         }
         return false;
     }
-
-    moment.tz.serDefault('Asia/Shanghai');
-    $('#datetimepicker1').data('DateTimePicker').timeZone('Asia/Shanghai');
-    $('#datetimepicker1').datetimepicker({sideBySide: true});
-    $('#datetimepicker1').data('DateTimePicker').format('YYYY-MM-DD HH:mm');
-    $('#datetimepicker1').data('DateTimePicker').date(moment());
 </script>
-
 </body>
 </html>

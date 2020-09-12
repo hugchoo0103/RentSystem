@@ -73,8 +73,8 @@ public class rentPersonController {
 
 
     //rentPerson --
-    @RequestMapping("/deleteRentPerson/{uid}")
-    public String deleteRentPerson(@PathVariable("uid") Integer uid,Model model){
+    @RequestMapping("/deleteRentPerson/{userId}")
+    public String deleteRentPerson(@PathVariable("userId") Integer uid,Model model){
         rpservice.DeleteRentPersonById(uid);
         return "redirect:/rentPerson/allRentPersonLimit?startIndex=1";
     }
