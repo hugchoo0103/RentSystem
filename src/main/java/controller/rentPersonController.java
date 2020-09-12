@@ -82,8 +82,8 @@ public class rentPersonController {
 
     //rentPerson query userId
     @RequestMapping("/getRentPersonById")
-    public String getRentPersonById(Integer uid,Model model){
-        rentPerson rp = rpservice.GetRentPersonById(uid);
+    public String getRentPersonById(Integer userId,Model model){
+        rentPerson rp = rpservice.GetRentPersonById(userId);
         List<rentPerson> list = new ArrayList<rentPerson>();
         list.add(rp);
         if(rp==null){
@@ -95,16 +95,29 @@ public class rentPersonController {
         return "rentPerson/allRentPerson";
     }
 
+    //rentPerson query userName
+    @RequestMapping("/getRentPersonByName")
+    public String getRentPersonByName(String userName,Model model){
+        List<rentPerson> list = rpservice.GetRentPersonByName(userName);
+        if(list.isEmpty()){
+            list = rpservice.GetRentPersonList();
+            model.addAttribute("error","无搜索结果");
+            return "forward:/rentPerson/allRentPersonLimit?startIndex=1";
+        }
+        model.addAttribute("rentPersonList",list);
+        return "rentPerson/allRentPerson";
+    }
+
     //rentPerson query userName   limit
     @RequestMapping("/getRentPersonByNameLimit")
-    public String getRentPersonByNameLimit(String uname, Integer startIndex, Integer pageSize, Model model){
-        PageInfo pageInfo = rpservice.GetRentPersonByNameListLimit(uname,startIndex,pageSize);
+    public String getRentPersonByNameLimit(String userName, Integer startIndex, Integer pageSize, Model model){
+        PageInfo pageInfo = rpservice.GetRentPersonByNameListLimit(userName,startIndex,pageSize);
         if(pageInfo.getTotal()==0){
             List<rentPerson> list = rpservice.GetRentPersonList();
             pageInfo = new PageInfo(list);
             model.addAttribute("error","无搜索结果");
         }
-        model.addAttribute("RentPersonList",pageInfo.getList());
+        model.addAttribute("rentPersonList",pageInfo.getList());
         model.addAttribute("pageinfo",pageInfo);
         return "rentPerson/allRentPerson";
     }

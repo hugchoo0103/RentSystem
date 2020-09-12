@@ -108,14 +108,14 @@
                     $('.choose_id').val();    //获取选中的值
                     var choose = $('.choose_id option:selected').attr("id");    //获取选中的option的id的值
                     if (choose == 1){
-                        if (document.rpform.userId.value.length>10||document.rpform.userId.value.length<2){
+                        if (document.rpform.userId.value.length>11||document.rpform.userId.value.length<6){
                             window.alert("请输入正确的租客编号！");
                             return false;
                         }
                     }
                     if (choose == 2) {
                         if (document.rpform.userId.value.length>10||document.rpform.userId.value.length<3){
-                            window.alert("请输入3-20个字符的租客姓名");
+                            window.alert("请输入3-10个字符的租客姓名");
                             return false;
                         }
                         else{
