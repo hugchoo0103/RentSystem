@@ -10,10 +10,10 @@
     </select>
 
     <insert id="AddRentInfo" parameterType="rentInfo">
-        insert into  rentsystem.rentinfo(rentInfoId,rentInfoNo,empName,houseId,rentId,
+        insert into  rentsystem.rentinfo(rentInfoNo,empName,houseId,rentId,
         rentName,rentPhone,hireId,hireName,hirePhone,payMoney,rentTime,rentStartDate,
         rentEndDate,payDate,remark)
-        values (#{rentInfoId},#{rentInfoNo},#{empName},#{houseId}
+        values (#{rentInfoNo},#{empName},#{houseId}
         ,#{rentId},#{rentName},#{rentPhone},#{hireId}
         ,#{hireName},#{hirePhone},#{payMoney},#{rentTime}
         ,#{rentStartDate},#{rentEndDate},#{payDate},#{remark})
