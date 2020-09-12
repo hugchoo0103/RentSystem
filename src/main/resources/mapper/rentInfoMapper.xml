@@ -22,53 +22,20 @@
     <update id="UpdateRentInfo" parameterType="rentInfo">
         update  rentsystem.rentinfo
         <set>
-            <if test="rentInfoId!=null">
-                rentInfoId=#{rentInfoId}
-            </if>
-            <if test="rentInfoNo!=null">
-                rentInfoNo=#{rentInfoNo}
-            </if>
-            <if test="empName!=null">
-                empName=#{empName}
-            </if>
             <if test="houseId!=null">
-                houseId=#{houseId}
+                houseId=#{houseId},
             </if>
             <if test="rentId!=null">
-                rentId=#{rentId}
-            </if>
-            <if test="rentName!=null">
-                rentName=#{rentName}
-            </if>
-            <if test="rentPhone!=null">
-                rentPhone=#{rentPhone}
+                rentId=#{rentId},
             </if>
             <if test="hireId!=null">
-                hireId=#{hireId}
-            </if>
-            <if test="hireName!=null">
-                hireName=#{hireName}
-            </if>
-            <if test="hirePhone!=null">
-                hirePhone=#{hirePhone}
-            </if>
-            <if test="payMoney!=null">
-                payMoney=#{payMoney}
-            </if>
-            <if test="rentTime!=null">
-                rentTime=#{rentTime}
+                hireId=#{hireId},
             </if>
             <if test="rentStartDate!=null">
-                rentStartDate=#{rentStartDate}
+                rentStartDate=#{rentStartDate},
             </if>
             <if test="rentEndDate!=null">
                 rentEndDate=#{rentEndDate}
-            </if>
-            <if test="payDate!=null">
-                payDate=#{payDate}
-            </if>
-            <if test="remark!=null">
-                remark=#{remark}
             </if>
         </set>
         where rentInfoId=#{rentInfoId}

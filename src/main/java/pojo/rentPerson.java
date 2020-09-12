@@ -31,8 +31,8 @@ public class rentPerson implements Serializable {
         return userId;
     }
 
-    public void setUserID(int userID) {
-        this.userId = userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

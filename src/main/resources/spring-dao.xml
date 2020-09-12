@@ -59,14 +59,5 @@
         <!--  只能使用构造器注入sqlSessionFactory，因为它没有set方法-->
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
-    <!--第二种整合mybatis的方式 不需要上面第一种整合方式的东西-->
-
-
-    <!--    配置声明式事务-->
-    <!--
-        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <constructor-arg ref="dataSource"/>
-        </bean>
-    -->
 
 </beans>
