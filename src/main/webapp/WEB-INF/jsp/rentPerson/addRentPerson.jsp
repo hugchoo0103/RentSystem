@@ -148,7 +148,7 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <a href="${pageContext.request.contextPath}/login/logout">
+            <a href="${pageContext.request.contextPath}/admin/logout">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
             </a>
         </form>
@@ -174,11 +174,11 @@
         </div>
         <div class="form-group">
             <label>电话</label>
-            <input type="text" class="form-control" name="phone" required>
+            <input type="tel" class="form-control" name="phone" required>
         </div>
         <div class="form-group">
             <label>邮箱</label>
-            <input type="text" class="form-control" name="email">
+            <input type="email" class="form-control" name="email">
         </div>
         <br>
         <center>

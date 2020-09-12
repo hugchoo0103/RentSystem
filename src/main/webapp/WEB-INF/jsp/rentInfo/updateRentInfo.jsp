@@ -100,9 +100,11 @@
         var regNumber = new RegExp("^[0-9]*$"); //正则表达式：纯数字
         var regNumber2 = new RegExp("^(0\\.(?!0+$)\\d{1,4}|^[1-9][0-9]{0,4}(\\.\\d{0,1})?)$");
         date_time();
-        function judgeTime(startTime,endTime){
-            return new Date(endTime).getTime()-new Date(startTime).getTime();
+
+        function judgeTime(startTime, endTime) {
+            return new Date(endTime).getTime() - new Date(startTime).getTime();
         }
+
         function myFunction() {
             document.getElementById("error").innerHTML = "";
         }
@@ -118,24 +120,28 @@
                 } else if (document.riform.houseId.value == "" || document.riform.houseId.value == null) {
                     window.alert("房号不能为空！");
                     return false;
-                } else if (document.riform.rentStartDate.value==""||document.riform.rentStartDate.value==null||document.riform.rentEndDate.value==""||document.riform.rentEndDate.value==null) {
-                    window.alert("时间不能为空！");
+                } else if (document.riform.rentStartDate.value==""||document.riform.rentStartDate.value==null) {
+                    window.alert("起始时间不能为空！");
+                    return false;
+                } else if (document.riform.rentEndDate.value==""||document.riform.rentEndDate.value==null) {
+                    window.alert("结束时间不能为空！");
                     return false;
                 }  else {
                     if (document.riform.rentId.value.length > 11 || document.riform.rentId.value.length < 6) {
                         window.alert("请输入6-11个数字的租客编号！");
                         return false;
-                    }else if (document.riform.hireId.value.length > 11 || document.riform.hireId.value.length < 6) {
+                    } else if (document.riform.hireId.value.length > 11 || document.riform.hireId.value.length < 6) {
                         window.alert("请输入6-11个数字的房东编号！");
                         return false;
-                    }else if (document.riform.houseId.value.length > 11 || document.riform.houseId.value.length < 6) {
+                    } else if (document.riform.houseId.value.length > 11 || document.riform.houseId.value.length < 6) {
                         window.alert("请输入6-11个数字的房屋编号！");
                         return false;
-                    }else{
-                        var startTime=$("[name='rentStartDate']").val();
-                        var endTime=$("[name='rentEndDate']").val();
-                        if (judgeTime(startTime,endTime)<0){
+                    } else {
+                        var startTime = $("[name='rentStartDate']").val();
+                        var endTime = $("[name='rentEndDate']").val();
+                        if (judgeTime(startTime, endTime) < 0) {
                             window.alert("结束时间不能早于起始时间！");
+                            return false;
                         }
                     }
                     $("#riform").submit();
@@ -144,21 +150,23 @@
         })
 
         setInterval("date_time()", 1000);
+
         function date_time() {
             var date = new Date();
             var year = date.getFullYear();
-            var month = date.getMonth()+1;
+            var month = date.getMonth() + 1;
             var day = date.getDate();
             var hour = date.getHours();
             var minutes = date.getMinutes();
             var seconds = date.getSeconds();
-            if(parseInt(seconds) >= 0 && parseInt(seconds) < 10) {
-                seconds = "0"+seconds;
+            if (parseInt(seconds) >= 0 && parseInt(seconds) < 10) {
+                seconds = "0" + seconds;
             }
-            $("#date_time").text(year+"/"+month+"/"+day+"   "+hour+":"+minutes+":"+seconds);
+            $("#date_time").text(year + "/" + month + "/" + day + "   " + hour + ":" + minutes + ":" + seconds);
         }
+
         jQuery('#datetimepicker').datetimepicker({
-            format:'Y-m-d H:i:s'      //这是设置日历格式
+            format: 'Y-m-d H:i:s'      //这是设置日历格式
         });
     </script>
 </head>
@@ -227,8 +235,12 @@
             <input type="text" class="form-control" name="rentEndDate" value="${upRentInfo.rentEndDate}" required>
         </div>
         <div class="form-group">
+            <label>支付租费日期</label>
+            <input type="text" class="form-control" name="payDate" value="${upRentInfo.payDate}">
+        </div>
+        <div class="form-group">
             <label>备注</label>
-            <input type="text" class="form-control" name="remark" value="${upRentInfo.remark}" required>
+            <input type="text" class="form-control" name="remark" value="${upRentInfo.remark}">
         </div>
         <br>
         <center>

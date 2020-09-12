@@ -1,7 +1,7 @@
 package pojo;
 
 import java.io.Serializable;
-import java.io.StringReader;
+import java.util.Date;
 
 public class rentInfo implements Serializable {
     private int rentInfoId;
@@ -16,9 +16,9 @@ public class rentInfo implements Serializable {
     private String hirePhone;
     private float payMoney;
     private int rentTime;
-    private String rentStartDate;
-    private String rentEndDate;
-    private String payDate;
+    private Date rentStartDate;
+    private Date rentEndDate;
+    private Date payDate;
     private String remark;
 
     @Override
@@ -36,9 +36,9 @@ public class rentInfo implements Serializable {
                 ", hirePhone='" + hirePhone + '\'' +
                 ", payMoney=" + payMoney +
                 ", rentTime=" + rentTime +
-                ", rentStartDate='" + rentStartDate + '\'' +
-                ", rentEndDate='" + rentEndDate + '\'' +
-                ", payDate='" + payDate + '\'' +
+                ", rentStartDate=" + rentStartDate +
+                ", rentEndDate=" + rentEndDate +
+                ", payDate=" + payDate +
                 ", remark='" + remark + '\'' +
                 '}';
     }
@@ -139,27 +139,27 @@ public class rentInfo implements Serializable {
         this.rentTime = rentTime;
     }
 
-    public String getRentStartDate() {
+    public Date getRentStartDate() {
         return rentStartDate;
     }
 
-    public void setRentStartDate(String rentStartDate) {
+    public void setRentStartDate(Date rentStartDate) {
         this.rentStartDate = rentStartDate;
     }
 
-    public String getRentEndDate() {
+    public Date getRentEndDate() {
         return rentEndDate;
     }
 
-    public void setRentEndDate(String rentEndDate) {
+    public void setRentEndDate(Date rentEndDate) {
         this.rentEndDate = rentEndDate;
     }
 
-    public String getPayDate() {
+    public Date getPayDate() {
         return payDate;
     }
 
-    public void setPayDate(String payDate) {
+    public void setPayDate(Date payDate) {
         this.payDate = payDate;
     }
 

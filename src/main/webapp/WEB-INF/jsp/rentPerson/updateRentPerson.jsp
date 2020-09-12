@@ -191,11 +191,11 @@
         </div>
             <div class="form-group">
                 <label>电话</label>
-                <input type="text" class="form-control" name="phone" value="${upRentPerson.phone}" required>
+                <input type="tel" class="form-control" name="phone" value="${upRentPerson.phone}" required>
             </div>
             <div class="form-group">
                 <label>邮箱</label>
-                <input type="text" class="form-control" name="email" value="${upRentPerson.email}">
+                <input type="email" class="form-control" name="email" value="${upRentPerson.email}">
             </div>
         <br>
         <center>

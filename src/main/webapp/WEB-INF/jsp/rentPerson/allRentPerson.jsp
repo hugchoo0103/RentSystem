@@ -156,7 +156,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item navbar-background">
 
-                <a class="nav-link" href="${pageContext.request.contextPath}/house/allHouseLimit">&nbsp&nbsp
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">&nbsp&nbsp
                     <svg class="bi bi-house-door" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -182,7 +182,7 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <a href="${pageContext.request.contextPath}/login/logout">
+            <a href="${pageContext.request.contextPath}/admin/logout">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
             </a>
         </form>

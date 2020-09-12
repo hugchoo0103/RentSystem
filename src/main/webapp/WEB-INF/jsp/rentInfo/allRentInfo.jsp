@@ -194,10 +194,13 @@
                 <thead>
                 <tr>
                     <th>租赁编号</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>租客</th>
+                    <th>房东</th>
+                    <th>房号</th>
+                    <th>起始时间</th>
+                    <th>结束时间</th>
+                    <th>交租时间</th>
+                    <th>备注</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -206,10 +209,13 @@
                 <c:forEach var="rentInfo" items="${rentInfoList}">
                     <tr>
                         <td>${rentInfo.rentInfoId}</td>
-                        <td>${rentInfo}</td>
-                        <td>${rentInfo}</td>
-                        <td>${rentInfo}</td>
-                        <td>${rentInfo}</td>
+                        <td>${rentInfo.rentId}</td>
+                        <td>${rentInfo.hireId}</td>
+                        <td>${rentInfo.houseId}</td>
+                        <td>${rentInfo.rentStartDate}</td>
+                        <td>${rentInfo.rentEndDate}</td>
+                        <td>${rentInfo.payDate}</td>
+                        <td>${rentInfo.remark}</td>
                         <td>
                             <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
