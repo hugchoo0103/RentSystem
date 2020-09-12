@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="http://localhost:9090/favicon.ico"/>
     <style>
         body{
-            background-image: url("../webapp/image/steep_desktop.jpg");
+            background-image: url(http://cdn.hommk.com/pcgame/ubi2015/img/game/main/steep_sc_6_in.jpg);
             background-size: 100%;
             background-repeat: no-repeat;
         }
@@ -26,7 +26,7 @@
             height: auto;
             padding-bottom: 30px;
             margin-top: 0px;
-            background: rgba(255,255,240, 0.8);
+            background: rgba(229, 248, 255, 0.8);
         }
         .modify-text:hover{
             background: gray;

@@ -30,7 +30,7 @@
     <script src="/microshop-settlement-server/resources/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
     <style>
         body {
-            background-image: url("../webapp/image/steep_sc_6_in.jpg");
+            background-image: url("https://www.ubisoft.com.cn/images/gamezone/steep/SKI_SNOW_FREERIDE.jpg");
             background-size: 100%;
             background-repeat: no-repeat;
         }

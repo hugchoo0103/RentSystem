@@ -16,7 +16,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         body {
-            background-image: url("../webapp/image/steep_sc_6_in.jpg");
+            background-image: url("https://www.ubisoft.com.cn/images/gamezone/steep/SNOW_SKI_GLACIER.jpg");
             background-size: 100%;
             background-repeat: no-repeat;
         }
