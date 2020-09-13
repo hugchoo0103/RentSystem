@@ -64,14 +64,9 @@ public class rentInfoController {
             model.addAttribute("rentInfoerror", "rentInfo已存在");
             return "rentInfo/addRentInfo";
         }
-
-        riservice.AddRentInfo(ri);
-
         Date d1=ri.getRentStartDate();
         Date d2=ri.getRentEndDate();
         float rent = hsservice.GetHouseById(ri.getHouseId()).getRentPrice();
-        System.out.println((float) (Math.ceil((double) (d2.getTime() - d1.getTime()) / 1000 / 60 / 60 / 24) * rent));
-        ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
         ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
 
         ri.setRentTime((int) Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24));
@@ -84,7 +79,6 @@ public class rentInfoController {
         ri.setRentPhone(rp.getPhone());
 
         riservice.AddRentInfo(ri);
-
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
 

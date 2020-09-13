@@ -14,16 +14,31 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+          rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css"
+          rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.25.3/locale/zh-hk.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment-timezone/0.5.31/moment-timezone.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="/microshop-settlement-server/resources/datetimepicker-master/jquery.datetimepicker.css"/>
+    <script src="/microshop-settlement-server/resources/datetimepicker-master/jquery.js"></script>
+    <script src="/microshop-settlement-server/resources/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
     <style>
         body {
             background-image: url("https://www.ubisoft.com.cn/images/gamezone/steep/SNOW_SKI_GLACIER.jpg");
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
         }
 
         .container {
             width: 550px;
-            height: 600px;
+            height: 850px;
             margin-top: 50px;
             background: rgba(255, 255, 240, 0.75);
             position: relative; /* 玻璃样式 */
@@ -99,9 +114,11 @@
     <script>
         var regNumber = new RegExp("^[0-9]*$"); //正则表达式：纯数字
         var regNumber2 = new RegExp("^(0\\.(?!0+$)\\d{1,4}|^[1-9][0-9]{0,4}(\\.\\d{0,1})?)$");
+
         function judgeTime(startTime, endTime) {
             return new Date(endTime).getTime() - new Date(startTime).getTime();
         }
+
         function myFunction() {
             document.getElementById("error").innerHTML = "";
         }
@@ -117,13 +134,13 @@
                 } else if (document.riform.houseId.value == "" || document.riform.houseId.value == null) {
                     window.alert("房号不能为空！");
                     return false;
-                } else if (document.riform.rentStartDate.value==""||document.riform.rentStartDate.value==null) {
+                } else if (document.riform.rentStartDate.value == "" || document.riform.rentStartDate.value == null) {
                     window.alert("起始时间不能为空！");
                     return false;
-                } else if (document.riform.rentEndDate.value==""||document.riform.rentEndDate.value==null) {
+                } else if (document.riform.rentEndDate.value == "" || document.riform.rentEndDate.value == null) {
                     window.alert("结束时间不能为空！");
                     return false;
-                }  else {
+                } else {
                     if (document.riform.rentId.value.length > 11 || document.riform.rentId.value.length < 6) {
                         window.alert("请输入6-11个数字的租客编号！");
                         return false;
@@ -150,7 +167,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/house/allHouseLimit?startIndex=1">Rent System</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/main">Rent System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -170,7 +187,7 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <a href="${pageContext.request.contextPath}/login/logout">
+            <a href="${pageContext.request.contextPath}/admin/logout">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
             </a>
         </form>
@@ -203,27 +220,87 @@
         <div class="form-group">
             <label>租房编号</label>
             <input type="text" class="form-control" name="houseId" value="${upRentInfo.houseId}" required>
-        </div>
-        <div class="form-group">
-            <label>组房起始日期</label>
-            <input type="text" class="form-control" name="rentStartDate" value="${upRentInfo.rentStartDate}" required>
-        </div>
-        <div class="form-group">
-            <label>组房结束日期</label>
-            <input type="text" class="form-control" name="rentEndDate" value="${upRentInfo.rentEndDate}" required>
-        </div>
-        <div class="form-group">
-            <label>支付租费日期</label>
-            <input type="text" class="form-control" name="payDate" value="${upRentInfo.payDate}">
-        </div>
-        <div class="form-group">
-            <label>备注</label>
-            <input type="text" class="form-control" name="remark" value="${upRentInfo.remark}">
-        </div>
-        <br>
-        <center>
-            <button id="button" type="submit" class="btn add-button">修改</button>
-        </center>
+            <%--        </div>--%>
+            <%--        <div class="form-group">--%>
+            <%--            <label>组房起始日期</label>--%>
+            <%--            <input type="text" class="form-control" name="rentStartDate" value="${upRentInfo.rentStartDate}" required>--%>
+            <%--        </div>--%>
+            <%--        <div class="form-group">--%>
+            <%--            <label>组房结束日期</label>--%>
+            <%--            <input type="text" class="form-control" name="rentEndDate" value="${upRentInfo.rentEndDate}" required>--%>
+            <%--        </div>--%>
+            <%--        <div class="form-group">--%>
+            <%--            <label>支付租费日期</label>--%>
+            <%--            <input type="text" class="form-control" name="payDate" value="${upRentInfo.payDate}">--%>
+            <%--        </div>--%>
+            <div class="form-group">
+                <label>组房起始日期</label>
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input type="text" placeholder="起始时间" name="rentStartDate" class="form-control datetimepicker-input"
+                           data-target="#datetimepicker1" value="${upRentInfo.rentStartDate}" required/>
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar">
+                            <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                                 fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                                <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                                <path fill-rule="evenodd"
+                                      d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                            </svg>
+                        </i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>组房结束日期</label>
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input type="text" placeholder="结束时间" name="rentEndDate" class="form-control datetimepicker-input"
+                           data-target="#datetimepicker2" value="${upRentInfo.rentEndDate}" required/>
+                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar">
+                            <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                                 fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                                <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                                <path fill-rule="evenodd"
+                                      d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                            </svg>
+                        </i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>支付租费日期</label>
+                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                    <input type="text" placeholder="支付租费时间" name="payDate" class="form-control datetimepicker-input"
+                           data-target="#datetimepicker3" value="${upRentInfo.payDate}"/>
+                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar">
+                            <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                                 fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                                <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                                <path fill-rule="evenodd"
+                                      d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                            </svg>
+                        </i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                <input type="text" class="form-control" name="remark" value="${upRentInfo.remark}">
+            </div>
+            <br>
+            <center>
+                <button id="button" type="submit" class="btn add-button">修改</button>
+            </center>
     </form>
 
 </div>

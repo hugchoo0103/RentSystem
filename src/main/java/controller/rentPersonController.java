@@ -31,7 +31,7 @@ public class rentPersonController {
     //rentPerson query all   limit
     @RequestMapping("/allRentPersonLimit")
     public String getRentPersonListLimit(@RequestParam(required = false,defaultValue = "0",value = "startIndex") Integer startIndex,
-                                        @RequestParam(required = false,defaultValue = "10",value = "pageSize")Integer pageSize,Model model){
+                                         @RequestParam(required = false,defaultValue = "10",value = "pageSize")Integer pageSize,Model model){
         PageInfo pageInfo = rpservice.GetRentPersonListLimit(startIndex,pageSize);
         model.addAttribute("rentPersonList",pageInfo.getList());
         model.addAttribute("pageinfo",pageInfo);

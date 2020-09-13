@@ -35,10 +35,11 @@ public class testMybatis {
         rentInfoService rentInfoServiceImpl = (rentInfoService)context.getBean("rentInfoServiceImpl");
         hirePersonService hpservice = (hirePersonService)context.getBean("hirePersonServiceImpl");
         rentPersonService rpservice = (rentPersonService)context.getBean("rentPersonServiceImpl");
-        rentInfo ri = null;
-        ri.setRentId(20001);
-        ri.setHireId(30001);
-        ri.setHouseId(40001);
+        rentInfo ri = new rentInfo();
+        ri.setRentId(200001);
+        ri.setHireId(300001);
+        ri.setHouseId(400001);
+        rentInfoServiceImpl.AddRentInfo(ri);
         hirePerson hp = hpservice.GetHirePersonById(ri.getHireId());
         rentPerson rp = rpservice.GetRentPersonById(ri.getRentId());
         ri.setHireName(hp.getUserName());
