@@ -88,7 +88,6 @@
             $("#date_time").text(year+"/"+month+"/"+day+"   "+hour+":"+minutes+":"+seconds);
         }
         $(function () {
-            var regNumber = new RegExp("^[0-9]*$");
             $("#button").click(function () {
                 if (document.houseform.houseId.value==""||document.houseform.houseId.value==null)
                 {
