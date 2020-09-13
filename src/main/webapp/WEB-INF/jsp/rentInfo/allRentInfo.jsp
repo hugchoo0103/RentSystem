@@ -200,6 +200,8 @@
                     <th>起始时间</th>
                     <th>结束时间</th>
                     <th>交租时间</th>
+                    <th>租房天数</th>
+                    <th>租费</th>
                     <th>备注</th>
                     <th>操作</th>
                 </tr>
@@ -209,12 +211,14 @@
                 <c:forEach var="rentInfo" items="${rentInfoList}">
                     <tr>
                         <td>${rentInfo.rentInfoId}</td>
-                        <td>${rentInfo.rentId}</td>
-                        <td>${rentInfo.hireId}</td>
+                        <td>${rentInfo.rentId}</br>${rentInfo.rentName}</td>
+                        <td>${rentInfo.hireId}</br>${rentInfo.hireName}</td>
                         <td>${rentInfo.houseId}</td>
                         <td>${rentInfo.rentStartDate}</td>
                         <td>${rentInfo.rentEndDate}</td>
                         <td>${rentInfo.payDate}</td>
+                        <td>${rentInfo.rentTime}</td>
+                        <td>${rentInfo.payMoney}</td>
                         <td>${rentInfo.remark}</td>
                         <td>
                             <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
