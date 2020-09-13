@@ -156,8 +156,8 @@
             <label>房主性别</label>
                 <select class="form-control choose_id" name="sex">
                     <option id="0" style="display: none;">--请选择当前空闲状态--</option>
-                    <option id="1" value="0" selected>男</option>
-                    <option id="2" value="1">女</option>
+                    <option id="1" value="male" selected>男</option>
+                    <option id="2" value="female">女</option>
                 </select>
         </div>
         <div class="form-group">

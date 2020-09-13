@@ -14,7 +14,7 @@ public interface hirePersonDao {
     void AddHirePerson (hirePerson rp);
 
     //hirePerson  CRUD  U
-    @Update("update hireperson  set sex=#{sex},phone=#{phone},email=#{email}")
+    @Update("update hireperson  set  userName=#{userName},sex=#{sex},phone=#{phone},email=#{email} where hireId=#{hireId}")
     void UpdateHirePerson (hirePerson rp);
 
     //hirePerson  CRUD  D   通过userId删除指定hirePerson

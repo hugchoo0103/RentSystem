@@ -72,6 +72,8 @@ public class rentInfoController {
         float rent = hsservice.GetHouseById(ri.getHouseId()).getRentPrice();
         System.out.println((float) (Math.ceil((double) (d2.getTime() - d1.getTime()) / 1000 / 60 / 60 / 24) * rent));
         ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
+        ri.setPayMoney((float) (Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24)*rent));
+
         ri.setRentTime((int) Math.ceil((double)(d2.getTime() - d1.getTime())/1000/60/60/24));
 
         hirePerson hp = hpservice.GetHirePersonById(ri.getHireId());
@@ -80,6 +82,9 @@ public class rentInfoController {
         ri.setHirePhone(hp.getPhone());
         ri.setRentName(rp.getUserName());
         ri.setRentPhone(rp.getPhone());
+
+        riservice.AddRentInfo(ri);
+
         return "redirect:/rentInfo/allRentInfoLimit?startIndex=1";
     }
 

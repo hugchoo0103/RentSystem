@@ -194,7 +194,7 @@
             <div class="page-header">
                 <br>
                 <h1 style="font-family: Candara">
-                    MEMBER INFO
+                    hirePerson INFO
                 </h1>
                 <br>
             </div>
