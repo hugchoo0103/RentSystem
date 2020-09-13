@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pojo.house;
+import pojo.house;
+import service.houseService;
 import service.houseService;
 
 import java.util.ArrayList;
@@ -79,7 +81,7 @@ public class houseController {
 
 
     //house query houseId
-    @RequestMapping("/getHouseById/{houseId}")
+    @RequestMapping("/getHouseById")
     public String getHouseById(Integer houseId, Model model){
         house house = houseService.GetHouseById(houseId);
         List<house> list = new ArrayList<house>();
@@ -92,5 +94,15 @@ public class houseController {
         model.addAttribute("houseList",list);
         return "house/allHouse";
     }
-    
+//    @RequestMapping("/getHouseByName")
+//    public String getHouseByName(String userName,Model model){
+//        List<house> list = houseService.GetHouseByName(userName);
+//        if(list.isEmpty()){
+//            list = houseService.GetHouseList();
+//            model.addAttribute("error","无搜索结果");
+//            return "forward:/house/allHouseLimit?startIndex=1";
+//        }
+//        model.addAttribute("houseList",list);
+//        return "house/allHouse";
+//    }
 }

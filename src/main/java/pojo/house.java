@@ -25,11 +25,11 @@ public class house implements Serializable {
         this.houseType = houseType;
     }
 
-    public int getHouseState() {
+    public int getHouseStatus() {
         return houseStatus;
     }
 
-    public void setHouseState(int houseStatus) {
+    public void setHouseStatus(int houseStatus) {
         this.houseStatus = houseStatus;
     }
 

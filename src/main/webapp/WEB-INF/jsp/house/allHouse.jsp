@@ -187,10 +187,9 @@
                 <select class="form-control choose_id">
                     <option id="0" style="display: none;">--请选择--</option>
                     <option id="1" selected>房屋编号</option>
-                    <option id="2">房屋名称</option>
                 </select>
             </div>
-            <form name="houseform" id="houseform" class="form-inline" action="${pageContext.request.contextPath}/house/getHouseById/${house.houseId}"
+            <form name="houseform" id="houseform" class="form-inline" action="${pageContext.request.contextPath}/house/getHouseById"
                   method="post" style="float: left;margin-left: 10px;">
 
                 <input id="intype" type="text" name="houseId" class="form-control mr-sm-2" type="search" value=""
@@ -230,12 +229,18 @@
                 <c:forEach var="house" items="${houseList}">
                     <tr>
                         <td>${house.houseId}</td>
-                        <td>${house.houseType}</td>
+
+                        <c:if test="${house.houseType=='P'}">
+                            <td>公寓</td>
+                        </c:if>
+                        <c:if test="${house.houseType=='M'}">
+                            <td>别墅</td>
+                        </c:if>
                         <td>${house.rentPrice}元/小时</td>
-                        <c:if test="${house.houseState==0}">
+                        <c:if test="${house.houseStatus==0}">
                             <td>空闲</td>
                         </c:if>
-                        <c:if test="${house.houseState==1}">
+                        <c:if test="${house.houseStatus==1}">
                             <td>已出租</td>
                         </c:if>
                         <td>${house.housRemark}</td>

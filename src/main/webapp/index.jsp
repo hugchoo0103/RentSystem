@@ -119,7 +119,7 @@
 <div class="container">
     <form class="form-signin" action="${pageContext.request.contextPath}/login/login" method="post" id="loginform" name="loginform">
         <div class="text-center mb-4">
-            <h1 class="h1 mb-3 font-weight-normal">房屋租零管理系统</h1>
+            <h1 class="h1 mb-3 font-weight-normal">房屋租赁管理系统</h1>
             <br>
         </div>
         <div class="form-label-group">
@@ -140,7 +140,7 @@
             <button id="button" class="login-button" type="submit">Sign in</button>
 <%--            <button onclick="window.location.href='${pageContext.request.contextPath}/index.jsp'" class="back-button" type="button" style="margin-top:20px;"  id="returnIndex" >Back</button>--%>
         </center>
-        <p class="mt-5 mb-3 text-muted text-center">&copy;房屋租零管理系统</p>
+        <p class="mt-5 mb-3 text-muted text-center">&copy;房屋租赁管理系统</p>
     </form>
 </div>
 </body>

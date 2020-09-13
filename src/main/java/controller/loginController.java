@@ -26,7 +26,7 @@ public class loginController {
             }
             else if (user.getPower() == 1) {
                 model.addAttribute("user", user);
-                return "house/allHouse";
+                return "forward:/house/allHouseLimit?startIndex=1";
             }
         }
         else if (user != null) {

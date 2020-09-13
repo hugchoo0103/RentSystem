@@ -107,8 +107,8 @@
                     $('.choose_id').val();    //获取选中的值
                     var choose = $('.choose_id option:selected').attr("id");    //获取选中的option的id的值
                     if (choose == 1){
-                        if (document.hirePersonform.hireId.value.length!=7||!regNumber.test(input)){
-                            window.alert("请输入7位数字的ID！");
+                        if (document.hirePersonform.hireId.value.length!=5||!regNumber.test(input)){
+                            window.alert("请输入5位数字的ID！");
                             return false;
                         }
                     }
@@ -209,7 +209,7 @@
                     <option id="2">房主姓名</option>
                 </select>
             </div>
-            <form name="hirePersonform" id="hirePersonform" class="form-inline" action="${pageContext.request.contextPath}/hirePerson/getHirePersonById/${hirePerson.hireId}"
+            <form name="hirePersonform" id="hirePersonform" class="form-inline" action="${pageContext.request.contextPath}/hirePerson/getHirePersonById"
                   method="post" style="float: left;margin-left: 10px;">
                 <input id="intype" type="text" name="hireId" class="form-control mr-sm-2" type="search"
                        placeholder="请输入搜索条件" aria-label="Search">

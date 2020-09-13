@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pojo.hirePerson;
+import pojo.rentPerson;
 import service.hirePersonService;
 
 import java.util.ArrayList;
@@ -58,8 +59,8 @@ public class hirePersonController {
 
     //hirePerson modify
     @RequestMapping("/toUpdateHirePerson/{userID}")
-    public String toUpdateHirePerson(@PathVariable("userID") Integer uid, Model model){
-        hirePerson hire = hirePersonService.GetHirePersonById(uid);
+    public String toUpdateHirePerson(@PathVariable("userID") Integer hireId, Model model){
+        hirePerson hire = hirePersonService.GetHirePersonById(hireId);
         model.addAttribute("upHirePerson",hire);
         return "hirePerson/updateHirePerson";
     }
@@ -72,17 +73,17 @@ public class hirePersonController {
 
 
     //hirePerson --
-    @RequestMapping("/deleteHirePerson/{uid}")
-    public String deleteHirePerson(@PathVariable("uid") Integer uid,Model model){
-        hirePersonService.DeleteHirePersonById(uid);
+    @RequestMapping("/deleteHirePerson/{hireId}")
+    public String deleteHirePerson(@PathVariable("hireId") Integer hireId,Model model){
+        hirePersonService.DeleteHirePersonById(hireId);
         return "redirect:/hirePerson/allHirePersonLimit?startIndex=1";
     }
 
 
     //hirePerson query userID
-    @RequestMapping("/getHirePersonById/{uid}")
-    public String getHirePersonByID(Integer uid, Model model){
-        hirePerson hire = hirePersonService.GetHirePersonById(uid);
+    @RequestMapping("/getHirePersonById")
+    public String getHirePersonById(Integer hireId, Model model){
+        hirePerson hire = hirePersonService.GetHirePersonById(hireId);
         List<hirePerson> list = new ArrayList<hirePerson>();
         list.add(hire);
         if(hire==null){
@@ -94,17 +95,15 @@ public class hirePersonController {
         return "hirePerson/allHirePerson";
     }
 
-    //hirePerson query userName   limit
-    @RequestMapping("/getHirePersonByNameLimit")
-    public String getHirePersonByNameLimit(String uname, Integer startIndex, Integer pageSize, Model model){
-        PageInfo pageInfo = hirePersonService.GetHirePersonByNameListLimit(uname,startIndex,pageSize);
-        if(pageInfo.getTotal()==0){
-            List<hirePerson> list = hirePersonService.GetHirePersonList();
-            pageInfo = new PageInfo(list);
+    @RequestMapping("/getHirePersonByName")
+    public String getHirePersonByName(String userName,Model model){
+        List<hirePerson> list = hirePersonService.GetHirePersonByName(userName);
+        if(list.isEmpty()){
+            list = hirePersonService.GetHirePersonList();
             model.addAttribute("error","无搜索结果");
+            return "forward:/hirePerson/allHirePersonLimit?startIndex=1";
         }
-        model.addAttribute("HirePersonList",pageInfo.getList());
-        model.addAttribute("pageinfo",pageInfo);
+        model.addAttribute("hirePersonList",list);
         return "hirePerson/allHirePerson";
     }
 }
