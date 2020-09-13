@@ -92,13 +92,13 @@
         }
         $(function () {
             $("#button").click(function () {
-                if (document.house.houseId.value==""||document.house.houseId.value==null)
+                if (document.getElementsByName("houseId")==""||document.house.houseId.value==null)
                 {
                     window.alert("房屋号不能为空！");
                     return false;
                 }
                 else{
-                    if (document.house.houseId.value.length>10||document.house.houseId.value.length<2){
+                    if (document.getElementsByName("houseId").length>10||document.getElementsByName("houseId").length<2){
                         window.alert("请输入正确的房屋号！");
                         return false;
                     }
@@ -141,15 +141,15 @@
 </nav>
 <div class="container">
     <div class="text-center mb-4">
-        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>MODIFY DANCEROOM</small></h1>
+        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>MODIFY HOUSE</small></h1>
     </div>
 
-    <form action="${pageContext.request.contextPath}/house/updateHouse" method="post" name="house">
+    <form action="${pageContext.request.contextPath}/house/updateHouse" method="post" id="updateHouse" name="house">
         <input type="hidden" name="houseId" value="${upHouse.houseId}">
-        <div class="form-group">
-            <label>房屋号</label>
-            <input type="text" class="form-control" name="houseId" value="${upHouse.houseId}" oninput="myFunction()" required>
-        </div>
+<%--        <div class="form-group">--%>
+<%--            <label>房屋号</label>--%>
+<%--            <input type="text" class="form-control" name="houseId" value="${upHouse.houseId}" oninput="myFunction()" required>--%>
+<%--        </div>--%>
         <div class="form-group">
             <label>房屋类别</label>
             <c:if test="${upHouse.houseType =='P'||upHouse.houseType =='p' }">
@@ -168,7 +168,7 @@
         </div>
         <div class="form-group">
             <label>租金</label>
-            <input type="text" class="form-control" name="houseRemark" value="${upHouse.rentPrice}">
+            <input type="text" class="form-control" name="rentPrice" value="${upHouse.rentPrice}">
          
         </div>
         <div class="form-group">

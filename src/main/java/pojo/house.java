@@ -41,12 +41,12 @@ public class house implements Serializable {
         this.rentPrice = rentPrice;
     }
 
-    public String getHousRemark() {
+    public String getHouseRemark() {
         return houseRemark;
     }
 
-    public void setHousRemark(String housRemark) {
-        this.houseRemark = housRemark;
+    public void setHouseRemark(String housRemark) {
+        this.houseRemark = houseRemark;
     }
 
     @Override
