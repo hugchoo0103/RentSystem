@@ -19,7 +19,7 @@
         body{
             background-image: url(http://cdn.hommk.com/pcgame/ubi2015/img/game/main/steep_sc_6_in.jpg);
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
         }
         .container {
             width: 100%;
