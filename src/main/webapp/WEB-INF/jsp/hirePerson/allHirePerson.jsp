@@ -209,7 +209,7 @@
                     <option id="2">房主姓名</option>
                 </select>
             </div>
-            <form name="hirePersonform" id="hirePersonform" class="form-inline" action="${pageContext.request.contextPath}/hirePerson/getHirePersonById"
+            <form name="hirePersonform" id="hirePersonform" class="form-inline" action="${pageContext.request.contextPath}/hirePerson/getHirePersonById/${hirePerson.hireId}"
                   method="post" style="float: left;margin-left: 10px;">
                 <input id="intype" type="text" name="hireId" class="form-control mr-sm-2" type="search"
                        placeholder="请输入搜索条件" aria-label="Search">

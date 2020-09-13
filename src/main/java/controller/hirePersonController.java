@@ -80,7 +80,7 @@ public class hirePersonController {
 
 
     //hirePerson query userID
-    @RequestMapping("/getHirePersonByID")
+    @RequestMapping("/getHirePersonById/{uid}")
     public String getHirePersonByID(Integer uid, Model model){
         hirePerson hire = hirePersonService.GetHirePersonById(uid);
         List<hirePerson> list = new ArrayList<hirePerson>();

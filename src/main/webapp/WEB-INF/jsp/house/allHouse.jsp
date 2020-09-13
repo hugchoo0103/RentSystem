@@ -190,7 +190,7 @@
                     <option id="2">房屋名称</option>
                 </select>
             </div>
-            <form name="houseform" id="houseform" class="form-inline" action="${pageContext.request.contextPath}/house/getHouseById"
+            <form name="houseform" id="houseform" class="form-inline" action="${pageContext.request.contextPath}/house/getHouseById/${house.houseId}"
                   method="post" style="float: left;margin-left: 10px;">
 
                 <input id="intype" type="text" name="houseId" class="form-control mr-sm-2" type="search" value=""

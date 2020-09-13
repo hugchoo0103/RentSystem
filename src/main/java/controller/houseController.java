@@ -79,7 +79,7 @@ public class houseController {
 
 
     //house query houseId
-    @RequestMapping("/getHouseById")
+    @RequestMapping("/getHouseById/{houseId}")
     public String getHouseById(Integer houseId, Model model){
         house house = houseService.GetHouseById(houseId);
         List<house> list = new ArrayList<house>();
