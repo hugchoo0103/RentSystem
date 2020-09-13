@@ -140,6 +140,9 @@
                 } else if (document.riform.rentEndDate.value == "" || document.riform.rentEndDate.value == null) {
                     window.alert("结束时间不能为空！");
                     return false;
+                } else if (document.riform.payDate.value == "" || document.riform.payDate.value == null) {
+                    window.alert("缴费时间不能为空！");
+                    return false;
                 } else {
                     if (document.riform.rentId.value.length > 11 || document.riform.rentId.value.length < 6) {
                         window.alert("请输入6-11个数字的租客编号！");
@@ -277,7 +280,7 @@
                 <label>支付租费日期</label>
                 <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
                     <input type="text" placeholder="支付租费时间" name="payDate" class="form-control datetimepicker-input"
-                           data-target="#datetimepicker3" value="${upRentInfo.payDate}"/>
+                           data-target="#datetimepicker3" value="${upRentInfo.payDate}" required/>
                     <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar">
                             <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
