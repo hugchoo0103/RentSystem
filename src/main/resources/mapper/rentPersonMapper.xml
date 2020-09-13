@@ -23,6 +23,9 @@
             <if test="sex!=null">
                 sex=#{sex},
             </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
             <if test="phone!=null">
                 phone=#{phone}
             </if>
