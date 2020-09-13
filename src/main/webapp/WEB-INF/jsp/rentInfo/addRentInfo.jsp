@@ -136,6 +136,9 @@
                 } else if (document.riform.rentEndDate.value==""||document.riform.rentEndDate.value==null) {
                     window.alert("结束时间不能为空！");
                     return false;
+                } else if (document.riform.payDate.value == "" || document.riform.payDate.value == null) {
+                    window.alert("缴费时间不能为空！");
+                    return false;
                 } else {
                     if (document.riform.rentId.value.length > 11 || document.riform.rentId.value.length < 6) {
                         window.alert("请输入6-11个数字的租客编号！");
@@ -208,61 +211,61 @@
         <div class="form-group">
             <label>租房编号</label>
             <input type="text" class="form-control" name="houseId" required>
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">--%>
-<%--                <input type="text" placeholder="起始时间" name="rentStartDate" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>--%>
-<%--                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">--%>
-<%--                    <div class="input-group-text"><i class="fa fa-calendar">--%>
-<%--                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"--%>
-<%--                             fill="currentColor"--%>
-<%--                             xmlns="http://www.w3.org/2000/svg">--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>--%>
-<%--                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>--%>
-<%--                        </svg>--%>
-<%--                    </i></div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">--%>
-<%--                <input type="text" placeholder="结束时间" name="rentEndDate" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>--%>
-<%--                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">--%>
-<%--                    <div class="input-group-text"><i class="fa fa-calendar">--%>
-<%--                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"--%>
-<%--                             fill="currentColor"--%>
-<%--                             xmlns="http://www.w3.org/2000/svg">--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>--%>
-<%--                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>--%>
-<%--                        </svg>--%>
-<%--                    </i></div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">--%>
-<%--                <input type="text" placeholder="支付租费时间" name="payDate" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>--%>
-<%--                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">--%>
-<%--                    <div class="input-group-text"><i class="fa fa-calendar">--%>
-<%--                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"--%>
-<%--                             fill="currentColor"--%>
-<%--                             xmlns="http://www.w3.org/2000/svg">--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>--%>
-<%--                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>--%>
-<%--                            <path fill-rule="evenodd"--%>
-<%--                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>--%>
-<%--                        </svg>--%>
-<%--                    </i></div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        </div>
+        <div class="form-group">
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                <input type="text" placeholder="起始时间" name="rentStartDate" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar">
+                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                             fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                        </svg>
+                    </i></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                <input type="text" placeholder="结束时间" name="rentEndDate" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar">
+                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                             fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                        </svg>
+                    </i></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                <input type="text" placeholder="支付租费时间" name="payDate" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
+                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar">
+                        <svg class="bi bi-list-task" width="1em" height="1em" viewBox="0 0 16 16"
+                             fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                        </svg>
+                    </i></div>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label>备注</label>
             <input type="text" class="form-control" name="remark">

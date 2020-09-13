@@ -35,7 +35,31 @@
                 rentStartDate=#{rentStartDate},
             </if>
             <if test="rentEndDate!=null">
-                rentEndDate=#{rentEndDate}
+                rentEndDate=#{rentEndDate},
+            </if>
+            <if test="rentName!=null">
+                rentName=#{rentName},
+            </if>
+            <if test="rentPhone!=null">
+                rentPhone=#{rentPhone},
+            </if>
+            <if test="hireName!=null">
+                hireName=#{hireName},
+            </if>
+            <if test="hirePhone!=null">
+                hirePhone=#{hirePhone},
+            </if>
+            <if test="payMoney!=null">
+                payMoney=#{payMoney},
+            </if>
+            <if test="payDate!=null">
+                payDate=#{payDate},
+            </if>
+            <if test="rentTime!=null">
+                rentTime=#{rentTime},
+            </if>
+            <if test="remark!=null">
+                remark=#{remark}
             </if>
         </set>
         where rentInfoId=#{rentInfoId}
