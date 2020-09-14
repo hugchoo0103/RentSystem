@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>所有舞蹈室</title>
+    <title>所有房屋</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -99,7 +99,7 @@
                     var choose = $('.choose_id option:selected').attr("id");    //获取选中的option的id的值
                     if (choose == 1){
                         if (document.houseform.houseId.value.length>10||document.houseform.houseId.value.length<2){
-                            window.alert("请输入正确的舞蹈室室号！");
+                            window.alert("请输入正确的房屋号！");
                             return false;
                         }
                     }
@@ -224,7 +224,7 @@
                     <th>操作</th>
                 </tr>
                 </thead>
-                <%-- 舞蹈室从数据库中查询处理，在这个list中便利: foreach --%>
+                <%-- 房屋从数据库中查询处理，在这个list中便利: foreach --%>
                 <tbody>
                 <c:forEach var="house" items="${houseList}">
                     <tr>
