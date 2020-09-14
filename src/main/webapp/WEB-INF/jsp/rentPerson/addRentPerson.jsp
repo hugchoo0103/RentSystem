@@ -114,7 +114,7 @@
                     return false;
                 } else {
                     if (document.rpform.userName.value.length > 20 || document.rpform.userName.value.length < 3) {
-                        window.alert("请输入3-20个字符的会员姓名！");
+                        window.alert("请输入3-20个字符的租客姓名！");
                         return false;
                     } else if (document.rpform.phone.value.length !== 11 || !regNumber.test(document.rpform.phone.value)) {
                         window.alert("请输入11位手机号！");
