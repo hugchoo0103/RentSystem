@@ -156,7 +156,7 @@
 </nav>
 <div class="container">
     <div class="text-center mb-4">
-        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>Modify RentPerson</small></h1>
+        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>Add RentPerson</small></h1>
     </div>
 
     <form action="${pageContext.request.contextPath}/rentPerson/addRentPerson" method="post" id="rpform"

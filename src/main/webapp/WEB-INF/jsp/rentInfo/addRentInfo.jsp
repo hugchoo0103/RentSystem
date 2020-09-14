@@ -194,7 +194,7 @@
 </nav>
 <div class="container">
     <div class="text-center mb-4">
-        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>Modify RentInfo</small></h1>
+        <h1 class="h1 font-weight-normal" style="font-family: 华文细黑"><small>Add RentInfo</small></h1>
     </div>
 
     <form action="${pageContext.request.contextPath}/rentInfo/addRentInfo" method="post" id="riform"
