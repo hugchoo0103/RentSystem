@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="http://localhost:9090/favicon.ico"/>
     <style>
         body{
-            background-image: url("http://r.photo.store.qq.com/psc?/V11MuXGR3g4CxP/gWShryPLAbNNMut8n7qrsOCdCFy1ETAohkKvRzhCfSWRfvDz7MXOWObR7wqh7JidDHDCg2XZ2..FaWGhMGBdiEWFN1CEuysQkQxL*PtqNpI!/r");
+            background-image: url(http://cdn.hommk.com/pcgame/ubi2015/img/game/main/steep_sc_6_in.jpg);
             background-size: 100%;
             background-repeat: no-repeat;
         }
