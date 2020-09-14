@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../css/floating-labels.css">
     <style type="text/css">
         body{
-            background-image: url(http://cdn.hommk.com/pcgame/ubi2015/img/game/main/steep_sc_6_in.jpg)
+            background-image: url(http://cdn.hommk.com/pcgame/ubi2015/img/game/main/steep_sc_6_in.jpg);
             background-size: 100%;
             background-repeat: no-repeat;
         }
